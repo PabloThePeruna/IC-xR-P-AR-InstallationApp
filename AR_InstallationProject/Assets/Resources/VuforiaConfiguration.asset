@@ -24,7 +24,7 @@ MonoBehaviour:
     useDelayedLoadingObjectTargets: 0
     modelTargetRecoWhileExtendedTracked: 1
     shareRecordingsInITunes: 0
-    version: 1.0.0
+    version: 10.6.3
     eulaAcceptedVersions: '{"Values":["10.6"]}'
   database:
     disableModelExtraction: 0
