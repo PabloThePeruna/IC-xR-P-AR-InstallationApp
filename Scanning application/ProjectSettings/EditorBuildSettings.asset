@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 5e5df5be1b3494b4b8b06b9fc8120629
+  - enabled: 1
+    path: Assets/Scenes/BoilerLibrary.unity
+    guid: 40d85fe7b01ae144ba39b49394cede26
   m_configObjects:
     UnityEditor.XR.ARKit.ARKitSettings: {fileID: 11400000, guid: 6840a46b0dc587c4599d0125ffe08aa0, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 982e6d20f8ef4144cbe7a8de84c695a5, type: 2}

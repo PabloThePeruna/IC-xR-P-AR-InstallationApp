@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
-public class ChangeScene : MonoBehaviour
+public class UIManager : MonoBehaviour
 {
     // Changes the scene
     public void ChangeToScene(string sceneToChangeTo)
@@ -13,15 +12,14 @@ public class ChangeScene : MonoBehaviour
     }
 
     // Disables the button given
-    public void DisableButton (GameObject buttonToDisable)
+    public void DisableButton(GameObject buttonToDisable)
     {
         buttonToDisable.SetActive(false);
     }
 
-    public void EnableButton (GameObject buttonToEnable)
+    // Enables the button given
+    public void EnableButton(GameObject buttonToEnable)
     {
         buttonToEnable.SetActive(true);
     }
-
-
 }
