@@ -20,13 +20,17 @@ public class InputManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        touch = Input.GetTouch(0);
+        if(Input.touchCount > 0)
+        {
+            touch = Input.GetTouch(0);
+        }
 
         if (Input.touchCount < 0 || touch.phase != TouchPhase.Began)
             return;
 
         if (IsPointerOverUI(touch))
             return;
+
         Ray ray = arCamera.ScreenPointToRay(touch.position);
         if (_raycastManager.Raycast(ray, _hits))
         {
