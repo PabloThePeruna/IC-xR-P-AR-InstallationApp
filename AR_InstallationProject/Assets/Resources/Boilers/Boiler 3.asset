@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b0714ab849b2204bb608603a74a9cb6, type: 3}
+  m_Name: Boiler 3
+  m_EditorClassIdentifier: 
+  price: 0
+  boilerPrefab: {fileID: 5047370186616274779, guid: a4d7e162a8f2006499df0b1d4f1ceded, type: 3}
+  boilerImage: {fileID: 21300000, guid: e2a416945b1f2984685f45a8b15a4503, type: 3}

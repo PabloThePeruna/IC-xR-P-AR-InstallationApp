@@ -7,10 +7,16 @@ public class InputManager : MonoBehaviour
 {
     [SerializeField] private Camera arCamera;
     [SerializeField] private ARRaycastManager _raycastManager;
+    [SerializeField] private GameObject crosshair;
 
     List<ARRaycastHit> _hits = new List<ARRaycastHit>();
 
     private Touch touch;
+
+    private Pose pose;
+
+    private RaycastHit hit;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +26,8 @@ public class InputManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        CrHCalculate();
+
         if(Input.touchCount > 0)
         {
             touch = Input.GetTouch(0);
@@ -31,12 +39,7 @@ public class InputManager : MonoBehaviour
         if (IsPointerOverUI(touch))
             return;
 
-        Ray ray = arCamera.ScreenPointToRay(touch.position);
-        if (_raycastManager.Raycast(ray, _hits))
-        {
-            Pose pose = _hits[0].pose;
-            Instantiate(DataHandler.Instance.boiler, pose.position, pose.rotation);
-        }
+        Instantiate(DataHandler.Instance.GetBoiler(), pose.position, pose.rotation);
     }
 
     bool IsPointerOverUI(Touch touch)
@@ -46,5 +49,22 @@ public class InputManager : MonoBehaviour
         List<RaycastResult> results = new List<RaycastResult>();
         EventSystem.current.RaycastAll(eventData, results);
         return results.Count > 0;
+    }
+
+    void CrHCalculate()
+    {
+        Vector3 origin = arCamera.ViewportToScreenPoint(new Vector3(0.5f, 0.5f, 0.5f));
+        Ray ray = arCamera.ScreenPointToRay(origin);
+        if (_raycastManager.Raycast(ray, _hits))
+        {
+            pose = _hits[0].pose;
+            crosshair.transform.position = pose.position;
+            crosshair.transform.eulerAngles = new Vector3(90, 0, 0);
+        }
+        else if (Physics.Raycast(ray, out hit))
+        {
+            crosshair.transform.position = hit.point;
+            crosshair.transform.up = hit.normal;
+        }
     }
 }
