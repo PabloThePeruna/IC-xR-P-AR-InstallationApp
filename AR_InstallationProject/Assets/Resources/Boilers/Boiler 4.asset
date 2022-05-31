@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Boiler 4
   m_EditorClassIdentifier: 
   price: 0
-  boilerPrefab: {fileID: 0}
-  boilerImage: {fileID: 0}
+  boilerPrefab: {fileID: 5681203475795044255, guid: 062a8c19ba8c5094ea23b2a0c7ea7c9b, type: 3}
+  boilerImage: {fileID: 21300000, guid: b4d6cf8f594465043b3adf0f485ad53e, type: 3}
