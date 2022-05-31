@@ -1314,7 +1314,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 707514929}
   m_Direction: 0
   m_Value: 0.00000021743062
-  m_Size: 0.7935949
+  m_Size: 0.79377913
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1386,7 +1386,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5158bad02cb6c94ebe9d11d11bdee2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boilerIns: {fileID: 1748834333}
+  boilerIns: {fileID: 0}
   buttonPrefab: {fileID: 7767029043657043975, guid: 8f4437c1fd4375d4a91499a4263da32a, type: 3}
   buttonContain: {fileID: 1748834333}
   boilers: []
