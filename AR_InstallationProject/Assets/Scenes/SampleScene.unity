@@ -624,7 +624,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 25
+  m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -1313,8 +1313,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 707514930}
   m_HandleRect: {fileID: 707514929}
   m_Direction: 0
-  m_Value: 0.5
-  m_Size: 0.55491704
+  m_Value: 0.5000001
+  m_Size: 0.68518084
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
