@@ -2427,7 +2427,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 642948560}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6e3c44306fb1e439a9f18b2212b8ab70, type: 3}
   m_Name: 
@@ -6444,7 +6444,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2097235530}
   - component: {fileID: 2097235529}
-  - component: {fileID: 2097235528}
   - component: {fileID: 2097235527}
   m_Layer: 0
   m_Name: DistanceText
@@ -6545,14 +6544,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 2097235529}
   m_maskType: 0
---- !u!222 &2097235528
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2097235526}
-  m_CullTransparentMesh: 0
 --- !u!23 &2097235529
 MeshRenderer:
   m_ObjectHideFlags: 0
