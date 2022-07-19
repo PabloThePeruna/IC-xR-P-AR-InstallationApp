@@ -15,13 +15,13 @@ public class VerticesCollider : MonoBehaviour
         {
             if (Physics.OverlapSphere(transform.position + vertices[i], 0f).Length != 0)
             {
-                Debug.Log("colliding");
+                //Debug.Log("colliding");
                 colors[i] = Color.red;
     
             }
             else
             {
-                Debug.Log("Miss");
+                //Debug.Log("Miss");
                 colors[i] = Color.white;
             }
 
