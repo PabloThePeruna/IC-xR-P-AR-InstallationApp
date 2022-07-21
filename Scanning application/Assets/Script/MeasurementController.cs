@@ -27,6 +27,15 @@ public class MeasurementController : MonoBehaviour
     private TextMeshPro distanceText;
 
     [SerializeField]
+    private TextMeshPro panelText;
+
+    [SerializeField]
+    private TextMeshProUGUI UIText;
+
+    [SerializeField]
+    private int devTest;
+
+    [SerializeField]
     private ARCameraManager arCameraManager;
     
     private LineRenderer measureLine;
@@ -68,8 +77,9 @@ public class MeasurementController : MonoBehaviour
     }
     
     void Update()
-    { 
-        if(Input.touchCount > 0)
+    {
+        
+        if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
             if(touch.phase == TouchPhase.Began)
@@ -108,6 +118,20 @@ public class MeasurementController : MonoBehaviour
             measureLine.SetPosition(1, endPoint.transform.position);
 
             distanceText.text = $"Distance: {(Vector3.Distance(startPoint.transform.position, endPoint.transform.position) * measurementFactor).ToString("F2")} cm";
+
+            UIText.text = $"Distance: {(Vector3.Distance(startPoint.transform.position, endPoint.transform.position) * measurementFactor).ToString("F2")} cm";
+            
         }
+
+        if (devTest != 0)
+        {
+            for (int i = 1; i <= devTest; i++)
+            {
+                if (i == 1) {UIText.text= "Distance" + i + ": 1337 parsec";}
+                UIText.text = UIText.text +"\nDistance" + i + ": 1337 parsec";
+            }
+        }
+
+        
     }
 }
