@@ -166,6 +166,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CloseButton6
       objectReference: {fileID: 0}
+    - target: {fileID: 4019340448275288594, guid: f157f01b725890246bf769ececd52c35, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4019340448275288599, guid: f157f01b725890246bf769ececd52c35, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -282,6 +286,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MeasureButton 6
       objectReference: {fileID: 0}
+    - target: {fileID: 4854622628595521025, guid: f157f01b725890246bf769ececd52c35, type: 3}
+      propertyPath: m_text
+      value: 'Distance 6: 0 cm'
+      objectReference: {fileID: 0}
     - target: {fileID: 5399858814979548758, guid: f157f01b725890246bf769ececd52c35, type: 3}
       propertyPath: m_Color.g
       value: 0.5882353
@@ -297,6 +305,10 @@ PrefabInstance:
     - target: {fileID: 9202988861099355960, guid: f157f01b725890246bf769ececd52c35, type: 3}
       propertyPath: m_Name
       value: AddButton6
+      objectReference: {fileID: 0}
+    - target: {fileID: 9202988861099355960, guid: f157f01b725890246bf769ececd52c35, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f157f01b725890246bf769ececd52c35, type: 3}
@@ -406,6 +418,10 @@ PrefabInstance:
     - target: {fileID: 4019340448275288594, guid: f157f01b725890246bf769ececd52c35, type: 3}
       propertyPath: m_Name
       value: CloseButton8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4019340448275288594, guid: f157f01b725890246bf769ececd52c35, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4019340448275288599, guid: f157f01b725890246bf769ececd52c35, type: 3}
       propertyPath: m_Color.b
@@ -523,6 +539,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MeasureButton 8
       objectReference: {fileID: 0}
+    - target: {fileID: 4854622628595521025, guid: f157f01b725890246bf769ececd52c35, type: 3}
+      propertyPath: m_text
+      value: 'Distance 8: 0 cm'
+      objectReference: {fileID: 0}
     - target: {fileID: 5399858814979548758, guid: f157f01b725890246bf769ececd52c35, type: 3}
       propertyPath: m_Color.b
       value: 0.627451
@@ -542,6 +562,10 @@ PrefabInstance:
     - target: {fileID: 9202988861099355960, guid: f157f01b725890246bf769ececd52c35, type: 3}
       propertyPath: m_Name
       value: AddButton8
+      objectReference: {fileID: 0}
+    - target: {fileID: 9202988861099355960, guid: f157f01b725890246bf769ececd52c35, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f157f01b725890246bf769ececd52c35, type: 3}
@@ -737,6 +761,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CloseButton2
       objectReference: {fileID: 0}
+    - target: {fileID: 4019340448275288594, guid: f157f01b725890246bf769ececd52c35, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4019340448275288599, guid: f157f01b725890246bf769ececd52c35, type: 3}
       propertyPath: m_Color.b
       value: 0
@@ -849,6 +877,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MeasureButton 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4854622628595521025, guid: f157f01b725890246bf769ececd52c35, type: 3}
+      propertyPath: m_text
+      value: 'Distance 2: 0 cm'
+      objectReference: {fileID: 0}
     - target: {fileID: 5399858814979548758, guid: f157f01b725890246bf769ececd52c35, type: 3}
       propertyPath: m_Color.b
       value: 0
@@ -864,6 +896,10 @@ PrefabInstance:
     - target: {fileID: 9202988861099355960, guid: f157f01b725890246bf769ececd52c35, type: 3}
       propertyPath: m_Name
       value: AddButton2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9202988861099355960, guid: f157f01b725890246bf769ececd52c35, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f157f01b725890246bf769ececd52c35, type: 3}
@@ -1050,6 +1086,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CloseButton4
       objectReference: {fileID: 0}
+    - target: {fileID: 4019340448275288594, guid: f157f01b725890246bf769ececd52c35, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4019340448275288599, guid: f157f01b725890246bf769ececd52c35, type: 3}
       propertyPath: m_Color.b
       value: 0
@@ -1158,6 +1198,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MeasureButton 4
       objectReference: {fileID: 0}
+    - target: {fileID: 4854622628595521025, guid: f157f01b725890246bf769ececd52c35, type: 3}
+      propertyPath: m_text
+      value: 'Distance 4: 0 cm'
+      objectReference: {fileID: 0}
     - target: {fileID: 5399858814979548758, guid: f157f01b725890246bf769ececd52c35, type: 3}
       propertyPath: m_Color.b
       value: 0
@@ -1173,6 +1217,10 @@ PrefabInstance:
     - target: {fileID: 9202988861099355960, guid: f157f01b725890246bf769ececd52c35, type: 3}
       propertyPath: m_Name
       value: AddButton4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9202988861099355960, guid: f157f01b725890246bf769ececd52c35, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f157f01b725890246bf769ececd52c35, type: 3}
@@ -1713,6 +1761,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CloseButton7
       objectReference: {fileID: 0}
+    - target: {fileID: 4019340448275288594, guid: f157f01b725890246bf769ececd52c35, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4019340448275288599, guid: f157f01b725890246bf769ececd52c35, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -1825,6 +1877,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MeasureButton 7
       objectReference: {fileID: 0}
+    - target: {fileID: 4854622628595521025, guid: f157f01b725890246bf769ececd52c35, type: 3}
+      propertyPath: m_text
+      value: 'Distance 7: 0 cm'
+      objectReference: {fileID: 0}
     - target: {fileID: 5399858814979548758, guid: f157f01b725890246bf769ececd52c35, type: 3}
       propertyPath: m_Color.g
       value: 0
@@ -1840,6 +1896,10 @@ PrefabInstance:
     - target: {fileID: 9202988861099355960, guid: f157f01b725890246bf769ececd52c35, type: 3}
       propertyPath: m_Name
       value: AddButton7
+      objectReference: {fileID: 0}
+    - target: {fileID: 9202988861099355960, guid: f157f01b725890246bf769ececd52c35, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f157f01b725890246bf769ececd52c35, type: 3}
@@ -2077,6 +2137,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CloseButton3
       objectReference: {fileID: 0}
+    - target: {fileID: 4019340448275288594, guid: f157f01b725890246bf769ececd52c35, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4019340448275288599, guid: f157f01b725890246bf769ececd52c35, type: 3}
       propertyPath: m_Color.b
       value: 0
@@ -2177,6 +2241,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MeasureButton 3
       objectReference: {fileID: 0}
+    - target: {fileID: 4854622628595521025, guid: f157f01b725890246bf769ececd52c35, type: 3}
+      propertyPath: m_text
+      value: 'Distance 3: 0 cm'
+      objectReference: {fileID: 0}
     - target: {fileID: 5399858814979548758, guid: f157f01b725890246bf769ececd52c35, type: 3}
       propertyPath: m_Color.b
       value: 0
@@ -2188,6 +2256,10 @@ PrefabInstance:
     - target: {fileID: 9202988861099355960, guid: f157f01b725890246bf769ececd52c35, type: 3}
       propertyPath: m_Name
       value: AddButton3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9202988861099355960, guid: f157f01b725890246bf769ececd52c35, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f157f01b725890246bf769ececd52c35, type: 3}
@@ -2601,6 +2673,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CloseButton5
       objectReference: {fileID: 0}
+    - target: {fileID: 4019340448275288594, guid: f157f01b725890246bf769ececd52c35, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4019340448275288599, guid: f157f01b725890246bf769ececd52c35, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -2709,6 +2785,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MeasureButton 5
       objectReference: {fileID: 0}
+    - target: {fileID: 4854622628595521025, guid: f157f01b725890246bf769ececd52c35, type: 3}
+      propertyPath: m_text
+      value: 'Distance 5: 0 cm'
+      objectReference: {fileID: 0}
     - target: {fileID: 5399858814979548758, guid: f157f01b725890246bf769ececd52c35, type: 3}
       propertyPath: m_Color.r
       value: 0
@@ -2720,6 +2800,10 @@ PrefabInstance:
     - target: {fileID: 9202988861099355960, guid: f157f01b725890246bf769ececd52c35, type: 3}
       propertyPath: m_Name
       value: AddButton5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9202988861099355960, guid: f157f01b725890246bf769ececd52c35, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f157f01b725890246bf769ececd52c35, type: 3}
@@ -3780,7 +3864,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4019340448275288594, guid: f157f01b725890246bf769ececd52c35, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4019340448275288599, guid: f157f01b725890246bf769ececd52c35, type: 3}
       propertyPath: m_Color.b
@@ -3894,6 +3978,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MeasureButton 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4854622628595521025, guid: f157f01b725890246bf769ececd52c35, type: 3}
+      propertyPath: m_text
+      value: 'Distance 1: 0 cm'
+      objectReference: {fileID: 0}
     - target: {fileID: 5399858814979548758, guid: f157f01b725890246bf769ececd52c35, type: 3}
       propertyPath: m_Color.b
       value: 0
@@ -3913,6 +4001,10 @@ PrefabInstance:
     - target: {fileID: 9202988861099355960, guid: f157f01b725890246bf769ececd52c35, type: 3}
       propertyPath: m_Name
       value: AddButton1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9202988861099355960, guid: f157f01b725890246bf769ececd52c35, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f157f01b725890246bf769ececd52c35, type: 3}
