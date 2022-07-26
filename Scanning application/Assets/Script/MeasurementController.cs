@@ -49,7 +49,7 @@ public class MeasurementController : MonoBehaviour
     private Vector2 touchPosition = default;
 
     private static List<ARRaycastHit> hits = new List<ARRaycastHit>();
-
+    
     void Awake() 
     {
         arRaycastManager = GetComponent<ARRaycastManager>();
@@ -131,7 +131,9 @@ public class MeasurementController : MonoBehaviour
                 UIText.text = UIText.text +"\nDistance" + i + ": 1337 parsec";
             }
         }
-
+    
         
     }
 }
+    
+
