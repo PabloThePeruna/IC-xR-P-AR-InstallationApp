@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/*
 public class ButtonStateScript : MonoBehaviour
 {
     public static int NumberOfButtons = 8;
@@ -58,3 +58,4 @@ public class ButtonStateScript : MonoBehaviour
         Debug.Log("Button 8 pressed");
     }
 }
+*/
