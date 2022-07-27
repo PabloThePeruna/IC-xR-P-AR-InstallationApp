@@ -7,6 +7,7 @@ public class ButtonStateScript : MonoBehaviour
     public static int NumberOfButtons = 8;
     public GameObject[] FunctionButtons = new GameObject[NumberOfButtons];
     public GameObject[] CloseButtons = new GameObject[NumberOfButtons];
+    public GameObject ScreenshotTakenButton;
 
 
     void Start()
@@ -16,6 +17,7 @@ public class ButtonStateScript : MonoBehaviour
             CloseButtons[i].SetActive(false);
             FunctionButtons[i].SetActive(false);
         }
+        ScreenshotTakenButton.SetActive(false);
     }
 
     public void functionButton1()
@@ -62,6 +64,7 @@ public class ButtonStateScript : MonoBehaviour
     {
         //Debug.Log("Calling TakeScreenshotAndSave() Function");
         StartCoroutine(TakeScreenshotAndSave());
+        ScreenshotTakenButton.SetActive(true);
     }
 
 
@@ -91,7 +94,7 @@ public class ButtonStateScript : MonoBehaviour
 
 
 
-
+   
 
     //This is the Screenshot Function, I don't undestand how it works, I got it from the Documentation pageof NativeGallery: https://github.com/yasirkula/UnityNativeGallery
     private IEnumerator TakeScreenshotAndSave()
@@ -105,7 +108,7 @@ public class ButtonStateScript : MonoBehaviour
         // Save the screenshot to Gallery/Photos
         NativeGallery.Permission permission = NativeGallery.SaveImageToGallery(ss, "GalleryTest", "Image.png", (success, path) => Debug.Log("Media save result: " + success + " " + path));
 
-        Debug.Log("Permission result: " + permission);
+        //Debug.Log("Permission result: " + permission);
 
         // To avoid memory leaks
         Destroy(ss);
