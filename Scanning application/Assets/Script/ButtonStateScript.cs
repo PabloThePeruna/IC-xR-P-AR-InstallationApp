@@ -1,13 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class ButtonStateScript : MonoBehaviour
 {
     public static int NumberOfButtons = 8;
     public GameObject[] FunctionButtons = new GameObject[NumberOfButtons];
+    //public Text[] FunctionButtonText=new Text[NumberOfButtons];
     public GameObject[] CloseButtons = new GameObject[NumberOfButtons];
     public GameObject ScreenshotTakenButton;
+    
 
 
     void Start()
@@ -65,6 +69,17 @@ public class ButtonStateScript : MonoBehaviour
         //Debug.Log("Calling TakeScreenshotAndSave() Function");
         StartCoroutine(TakeScreenshotAndSave());
     }
+    public void CopyText()
+    {
+        string text = "AppName Measurements:";
+        for(int i=0; i < NumberOfButtons; i++)
+        {
+            text = text + "\n" + FunctionButtons[i].GetComponentInChildren<TMP_Text>().text;
+        }
+        UniClipboard.SetText(text);
+        Debug.Log(text);
+    }
+    
 
 
 
@@ -92,8 +107,6 @@ public class ButtonStateScript : MonoBehaviour
 
 
 
-
-   
 
     //This is the Screenshot Function, I don't undestand how it works, I got it from the Documentation pageof NativeGallery: https://github.com/yasirkula/UnityNativeGallery
     private IEnumerator TakeScreenshotAndSave()
