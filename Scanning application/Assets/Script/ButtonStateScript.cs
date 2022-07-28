@@ -64,7 +64,6 @@ public class ButtonStateScript : MonoBehaviour
     {
         //Debug.Log("Calling TakeScreenshotAndSave() Function");
         StartCoroutine(TakeScreenshotAndSave());
-        ScreenshotTakenButton.SetActive(true);
     }
 
 
@@ -107,7 +106,7 @@ public class ButtonStateScript : MonoBehaviour
 
         // Save the screenshot to Gallery/Photos
         NativeGallery.Permission permission = NativeGallery.SaveImageToGallery(ss, "GalleryTest", "Image.png", (success, path) => Debug.Log("Media save result: " + success + " " + path));
-
+        ScreenshotTakenButton.SetActive(true);
         //Debug.Log("Permission result: " + permission);
 
         // To avoid memory leaks
