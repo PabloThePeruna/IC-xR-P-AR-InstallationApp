@@ -31,8 +31,8 @@ public class ButtonStateScript : MonoBehaviour
 
     private static List<ARRaycastHit> hits = new List<ARRaycastHit>();
 
-    private int ActiveButton = -1;
-    
+    private int ActiveButton;
+
 
 
     void Start()
@@ -46,7 +46,7 @@ public class ButtonStateScript : MonoBehaviour
 
         //From here is Stuff for the multiple Measurements
         arRaycastManager = GetComponent<ARRaycastManager>();
-        
+
 
         for (int i = 0; i < NumberOfButtons; i++)
         {
@@ -55,61 +55,19 @@ public class ButtonStateScript : MonoBehaviour
             startPoints[i].SetActive(false);
             endPoints[i].SetActive(false);
             measureLines[i] = GetComponent<LineRenderer>();
-        }       
-    }
-    public void Update()
-    {
-        if (ActiveButton >=0)
-        {
-            if (Input.touchCount > 0)
-            {
-                Touch touch = Input.GetTouch(0);
-                if (touch.phase == TouchPhase.Began)
-                {
-                    touchPosition = touch.position;
-
-                    if (arRaycastManager.Raycast(touchPosition, hits, UnityEngine.XR.ARSubsystems.TrackableType.PlaneWithinPolygon))
-                    {
-                        startPoints[ActiveButton].SetActive(true);
-
-                        Pose hitPose = hits[0].pose;
-                        startPoints[ActiveButton].transform.SetPositionAndRotation(hitPose.position, hitPose.rotation);
-                    }
-                }
-
-                if (touch.phase == TouchPhase.Moved)
-                {
-                    touchPosition = touch.position;
-
-                    if (arRaycastManager.Raycast(touchPosition, hits, UnityEngine.XR.ARSubsystems.TrackableType.PlaneWithinPolygon))
-                    {
-                        measureLines[ActiveButton].gameObject.SetActive(true);
-                        endPoints[ActiveButton].SetActive(true);
-
-                        Pose hitPose = hits[0].pose;
-                        endPoints[ActiveButton].transform.SetPositionAndRotation(hitPose.position, hitPose.rotation);
-                    }
-                }
-            }
-
-            if (startPoints[ActiveButton].activeSelf && endPoints[ActiveButton].activeSelf)
-            {
-                measureLines[ActiveButton].SetPosition(0, startPoints[ActiveButton].transform.position);
-                measureLines[ActiveButton].SetPosition(1, endPoints[ActiveButton].transform.position);
-                //The following line of Code should work
-                FunctionButtons[ActiveButton].GetComponentInChildren<TMP_Text>().text = $"Distance: {(Vector3.Distance(startPoints[ActiveButton].transform.position, endPoints[ActiveButton].transform.position) * measurementFactor).ToString("F2")} cm";
-
-            }
         }
-
-
+        ActiveButton = -1;
+        Debug.Log("Set ActiveButton to -1");
     }
 
     public void functionButton1()
     {
         //Perform Function of Button 1
         Debug.Log("Button 1 pressed");
+
         ActiveButton = 0;
+
+        Debug.Log("set ActiveButton to 0");
     }
     public void functionButton2()
     {
@@ -191,5 +149,66 @@ public class ButtonStateScript : MonoBehaviour
 
         // To avoid memory leaks
         Destroy(ss);
+    }
+    //Somehow the Update Function isn't being called, maybe it was the "public" in front
+    void Update()
+    {
+        //Debug.Log("ActiveButton = "+ActiveButton);
+        if (ActiveButton >= 0)
+        {
+            Debug.Log("A Button is active");
+
+            //At this point it will be necessary to change the colors of startPoints[ActiveButton], endPoints[ActiveButton], measureLines[ActiveButton]
+            //to the colors of the selected FunctionButtons[ActiveButton]
+
+            //Drag and Drop?
+
+            //Highlight the selected FunctionButtons[ActiveButton]
+
+            if (Input.touchCount > 0)
+            {
+                Debug.Log("TouchCount > 0");
+                Touch touch = Input.GetTouch(0);
+                if (touch.phase == TouchPhase.Began)
+                {
+                    Debug.Log("TouchPhase.Began");
+                    touchPosition = touch.position;
+
+                    if (arRaycastManager.Raycast(touchPosition, hits, UnityEngine.XR.ARSubsystems.TrackableType.PlaneWithinPolygon))
+                    {
+                        Debug.Log("arRaycastManager hits");
+                        startPoints[ActiveButton].SetActive(true);
+
+                        Pose hitPose = hits[0].pose;
+                        startPoints[ActiveButton].transform.SetPositionAndRotation(hitPose.position, hitPose.rotation);
+                    }
+                }
+
+                if (touch.phase == TouchPhase.Moved)
+                {
+                    touchPosition = touch.position;
+
+                    if (arRaycastManager.Raycast(touchPosition, hits, UnityEngine.XR.ARSubsystems.TrackableType.PlaneWithinPolygon))
+                    {
+                        measureLines[ActiveButton].gameObject.SetActive(true);
+                        endPoints[ActiveButton].SetActive(true);
+
+                        Pose hitPose = hits[0].pose;
+                        endPoints[ActiveButton].transform.SetPositionAndRotation(hitPose.position, hitPose.rotation);
+                    }
+                }
+            }
+
+            if (startPoints[ActiveButton].activeSelf && endPoints[ActiveButton].activeSelf)
+            {
+                measureLines[ActiveButton].SetPosition(0, startPoints[ActiveButton].transform.position);
+                measureLines[ActiveButton].SetPosition(1, endPoints[ActiveButton].transform.position);
+                //The following line of Code should work
+                FunctionButtons[ActiveButton].GetComponentInChildren<TMP_Text>().text = $"Distance: {(Vector3.Distance(startPoints[ActiveButton].transform.position, endPoints[ActiveButton].transform.position) * measurementFactor).ToString("F2")} cm";
+
+            }
+        }
+
+
     }
 }
