@@ -31,7 +31,7 @@ public class ButtonStateScript : MonoBehaviour
 
     private static List<ARRaycastHit> hits = new List<ARRaycastHit>();
 
-    private int ActiveButton;
+    private static int ActiveButton;
 
 
 
@@ -57,7 +57,7 @@ public class ButtonStateScript : MonoBehaviour
             measureLines[i] = GetComponent<LineRenderer>();
         }
         ActiveButton = -1;
-        Debug.Log("Set ActiveButton to -1");
+        //Debug.Log("Set ActiveButton to -1");
     }
 
     public void functionButton1()
@@ -67,49 +67,56 @@ public class ButtonStateScript : MonoBehaviour
 
         ActiveButton = 0;
 
-        Debug.Log("set ActiveButton to 0");
+        //Debug.Log("set ActiveButton to 0");
     }
     public void functionButton2()
     {
         //Perform Function of Button 2
         Debug.Log("Button 2 pressed");
         ActiveButton = 1;
+        //Debug.Log("set ActiveButton to 1");
     }
     public void functionButton3()
     {
         //Perform Function of Button 3
         Debug.Log("Button 3 pressed");
         ActiveButton = 2;
+        //Debug.Log("set ActiveButton to 2");
     }
     public void functionButton4()
     {
         //Perform Function of Button 4
         Debug.Log("Button 4 pressed");
         ActiveButton = 3;
+        //Debug.Log("set ActiveButton to 3");
     }
     public void functionButton5()
     {
         //Perform Function of Button 5
         Debug.Log("Button 5 pressed");
         ActiveButton = 4;
+        //Debug.Log("set ActiveButton to 4");
     }
     public void functionButton6()
     {
         //Perform Function of Button 6
         Debug.Log("Button 6 pressed");
         ActiveButton = 5;
+        //Debug.Log("set ActiveButton to 5");
     }
     public void functionButton7()
     {
         //Perform Function of Button 7
         Debug.Log("Button 7 pressed");
         ActiveButton = 6;
+        //Debug.Log("set ActiveButton to 6");
     }
     public void functionButton8()
     {
         //Perform Function of Button 8
         Debug.Log("Button 8 pressed");
         ActiveButton = 7;
+        //Debug.Log("set ActiveButton to 7");
     }
     public void Screenshot()
     {
@@ -150,11 +157,14 @@ public class ButtonStateScript : MonoBehaviour
         // To avoid memory leaks
         Destroy(ss);
     }
-    //Somehow the Update Function isn't being called, maybe it was the "public" in front
+
+
+    
     void Update()
     {
         //Debug.Log("ActiveButton = "+ActiveButton);
-        if (ActiveButton >= 0)
+        //Somehow we are stuck here
+        if(ActiveButton >= 0)
         {
             Debug.Log("A Button is active");
 
@@ -167,16 +177,16 @@ public class ButtonStateScript : MonoBehaviour
 
             if (Input.touchCount > 0)
             {
-                Debug.Log("TouchCount > 0");
+                //Debug.Log("TouchCount > 0");
                 Touch touch = Input.GetTouch(0);
                 if (touch.phase == TouchPhase.Began)
                 {
-                    Debug.Log("TouchPhase.Began");
+                    //Debug.Log("TouchPhase.Began");
                     touchPosition = touch.position;
 
                     if (arRaycastManager.Raycast(touchPosition, hits, UnityEngine.XR.ARSubsystems.TrackableType.PlaneWithinPolygon))
                     {
-                        Debug.Log("arRaycastManager hits");
+                        //Debug.Log("arRaycastManager hits");
                         startPoints[ActiveButton].SetActive(true);
 
                         Pose hitPose = hits[0].pose;
