@@ -1434,7 +1434,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 382808606}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 592900572e00921429945345e9d9dde8, type: 3}
   m_Name: 
@@ -1458,6 +1458,9 @@ MonoBehaviour:
   - {fileID: 1845935698}
   - {fileID: 793529301}
   ScreenshotTakenButton: {fileID: 952836992}
+  measurementPointPrefab: {fileID: 0}
+  measurementFactor: 100
+  arCameraManager: {fileID: 0}
 --- !u!1 &426378474
 GameObject:
   m_ObjectHideFlags: 0
@@ -2816,6 +2819,7 @@ GameObject:
   - component: {fileID: 758132664}
   - component: {fileID: 758132665}
   - component: {fileID: 758132666}
+  - component: {fileID: 758132667}
   m_Layer: 0
   m_Name: AR Session Origin
   m_TagString: Untagged
@@ -2872,7 +2876,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 758132660}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8596c1d6d24d2412f85c1c4b82e10c91, type: 3}
   m_Name: 
@@ -2986,6 +2990,40 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 0
   m_Loop: 1
+--- !u!114 &758132667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 758132660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 592900572e00921429945345e9d9dde8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FunctionButtons:
+  - {fileID: 205683315}
+  - {fileID: 1920518852}
+  - {fileID: 658883245}
+  - {fileID: 1975659845}
+  - {fileID: 1745329743}
+  - {fileID: 246473789}
+  - {fileID: 1890272165}
+  - {fileID: 339585751}
+  CloseButtons:
+  - {fileID: 685219601}
+  - {fileID: 469102878}
+  - {fileID: 166058599}
+  - {fileID: 1658614815}
+  - {fileID: 916794597}
+  - {fileID: 195293617}
+  - {fileID: 1845935698}
+  - {fileID: 793529301}
+  ScreenshotTakenButton: {fileID: 952836992}
+  measurementPointPrefab: {fileID: 2071381972608095454, guid: 8fb2ea08c01e0448c80b27ee8886a801, type: 3}
+  measurementFactor: 100
+  arCameraManager: {fileID: 1737330651}
 --- !u!1 &793529301 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4019340448275288594, guid: f157f01b725890246bf769ececd52c35, type: 3}
@@ -4489,7 +4527,7 @@ GameObject:
   - component: {fileID: 2111047678}
   - component: {fileID: 2111047677}
   m_Layer: 5
-  m_Name: Button
+  m_Name: DismissButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4559,7 +4597,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2111047678}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1856188011}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2111047678
 MonoBehaviour:
   m_ObjectHideFlags: 0

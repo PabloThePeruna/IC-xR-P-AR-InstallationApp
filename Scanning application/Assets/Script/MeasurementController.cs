@@ -112,8 +112,8 @@ public class MeasurementController : MonoBehaviour
 
         if(startPoint.activeSelf && endPoint.activeSelf)
         {
-            distanceText.transform.position = endPoint.transform.position + offsetMeasurement;
-            distanceText.transform.rotation = endPoint.transform.rotation;
+            //distanceText.transform.position = endPoint.transform.position + offsetMeasurement;
+            //distanceText.transform.rotation = endPoint.transform.rotation;
             measureLine.SetPosition(0, startPoint.transform.position);
             measureLine.SetPosition(1, endPoint.transform.position);
 
