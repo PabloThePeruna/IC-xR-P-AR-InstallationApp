@@ -117,20 +117,20 @@ public class MeasurementController : MonoBehaviour
             measureLine.SetPosition(0, startPoint.transform.position);
             measureLine.SetPosition(1, endPoint.transform.position);
 
-            distanceText.text = $"Distance: {(Vector3.Distance(startPoint.transform.position, endPoint.transform.position) * measurementFactor).ToString("F2")} cm";
+            //distanceText.text = $"Distance: {(Vector3.Distance(startPoint.transform.position, endPoint.transform.position) * measurementFactor).ToString("F2")} cm";
 
             UIText.text = $"Distance: {(Vector3.Distance(startPoint.transform.position, endPoint.transform.position) * measurementFactor).ToString("F2")} cm";
             
         }
 
-        if (devTest != 0)
+        /*if (devTest != 0)
         {
             for (int i = 1; i <= devTest; i++)
             {
                 if (i == 1) {UIText.text= "Distance" + i + ": 1337 parsec";}
                 UIText.text = UIText.text +"\nDistance" + i + ": 1337 parsec";
             }
-        }
+        }*/
     
         
     }

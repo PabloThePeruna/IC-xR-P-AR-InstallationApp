@@ -2462,7 +2462,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 642948560}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9f891e4f69fca734c97f05975fd69794, type: 3}
   m_Name: 
@@ -3744,6 +3744,9 @@ MonoBehaviour:
   welcomePanel: {fileID: 0}
   dismissButton: {fileID: 0}
   distanceText: {fileID: 2097235527}
+  panelText: {fileID: 0}
+  UIText: {fileID: 0}
+  devTest: 0
   arCameraManager: {fileID: 642948563}
 --- !u!114 &1010853299
 MonoBehaviour:

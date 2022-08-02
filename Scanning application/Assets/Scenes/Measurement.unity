@@ -2884,7 +2884,7 @@ MonoBehaviour:
   dismissButton: {fileID: 2111047677}
   distanceText: {fileID: 1802853103}
   panelText: {fileID: 0}
-  UIText: {fileID: 310962739}
+  UIText: {fileID: 2050494454}
   devTest: 8
   arCameraManager: {fileID: 1737330651}
 --- !u!120 &758132666
@@ -3981,7 +3981,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1802853103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4460,6 +4460,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4019340449600143722, guid: f157f01b725890246bf769ececd52c35, type: 3}
   m_PrefabInstance: {fileID: 716078882}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2050494454 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4854622628595521025, guid: f157f01b725890246bf769ececd52c35, type: 3}
+  m_PrefabInstance: {fileID: 4019340447860739331}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &2078264425 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4019340449600143722, guid: f157f01b725890246bf769ececd52c35, type: 3}
