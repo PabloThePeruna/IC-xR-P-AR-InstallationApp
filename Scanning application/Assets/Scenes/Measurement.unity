@@ -133,14 +133,14 @@ PrefabInstance:
     - target: {fileID: 1590248167663008117, guid: f157f01b725890246bf769ececd52c35, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 382808611}
+      objectReference: {fileID: 758132667}
     - target: {fileID: 1590248167663008117, guid: f157f01b725890246bf769ececd52c35, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: functionButton6
       objectReference: {fileID: 0}
     - target: {fileID: 1590248167663008117, guid: f157f01b725890246bf769ececd52c35, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: ButtonStateScript, Assembly-CSharp
+      value: ButtonState, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1590248167663008117, guid: f157f01b725890246bf769ececd52c35, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -382,14 +382,14 @@ PrefabInstance:
     - target: {fileID: 1590248167663008117, guid: f157f01b725890246bf769ececd52c35, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 382808611}
+      objectReference: {fileID: 758132667}
     - target: {fileID: 1590248167663008117, guid: f157f01b725890246bf769ececd52c35, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: functionButton8
       objectReference: {fileID: 0}
     - target: {fileID: 1590248167663008117, guid: f157f01b725890246bf769ececd52c35, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: ButtonStateScript, Assembly-CSharp
+      value: ButtonState, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1590248167663008117, guid: f157f01b725890246bf769ececd52c35, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -728,14 +728,14 @@ PrefabInstance:
     - target: {fileID: 1590248167663008117, guid: f157f01b725890246bf769ececd52c35, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 382808611}
+      objectReference: {fileID: 758132667}
     - target: {fileID: 1590248167663008117, guid: f157f01b725890246bf769ececd52c35, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: functionButton2
       objectReference: {fileID: 0}
     - target: {fileID: 1590248167663008117, guid: f157f01b725890246bf769ececd52c35, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: ButtonStateScript, Assembly-CSharp
+      value: ButtonState, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1590248167663008117, guid: f157f01b725890246bf769ececd52c35, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -988,8 +988,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 382808611}
-        m_TargetAssemblyTypeName: ButtonStateScript, Assembly-CSharp
+      - m_Target: {fileID: 758132667}
+        m_TargetAssemblyTypeName: ButtonState, Assembly-CSharp
         m_MethodName: Screenshot
         m_Mode: 1
         m_Arguments:
@@ -1188,14 +1188,14 @@ PrefabInstance:
     - target: {fileID: 1590248167663008117, guid: f157f01b725890246bf769ececd52c35, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 382808611}
+      objectReference: {fileID: 758132667}
     - target: {fileID: 1590248167663008117, guid: f157f01b725890246bf769ececd52c35, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: functionButton4
       objectReference: {fileID: 0}
     - target: {fileID: 1590248167663008117, guid: f157f01b725890246bf769ececd52c35, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: ButtonStateScript, Assembly-CSharp
+      value: ButtonState, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1590248167663008117, guid: f157f01b725890246bf769ececd52c35, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -1379,7 +1379,6 @@ GameObject:
   m_Component:
   - component: {fileID: 382808607}
   - component: {fileID: 382808610}
-  - component: {fileID: 382808611}
   m_Layer: 5
   m_Name: MeasureStuff
   m_TagString: Untagged
@@ -1427,40 +1426,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 382808606}
   m_CullTransparentMesh: 1
---- !u!114 &382808611
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 382808606}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 592900572e00921429945345e9d9dde8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  FunctionButtons:
-  - {fileID: 205683315}
-  - {fileID: 1920518852}
-  - {fileID: 658883245}
-  - {fileID: 1975659845}
-  - {fileID: 1745329743}
-  - {fileID: 246473789}
-  - {fileID: 1890272165}
-  - {fileID: 339585751}
-  CloseButtons:
-  - {fileID: 685219601}
-  - {fileID: 469102878}
-  - {fileID: 166058599}
-  - {fileID: 1658614815}
-  - {fileID: 916794597}
-  - {fileID: 195293617}
-  - {fileID: 1845935698}
-  - {fileID: 793529301}
-  ScreenshotTakenButton: {fileID: 952836992}
-  measurementPointPrefab: {fileID: 0}
-  measurementFactor: 100
-  arCameraManager: {fileID: 0}
 --- !u!1 &426378474
 GameObject:
   m_ObjectHideFlags: 0
@@ -1869,14 +1834,14 @@ PrefabInstance:
     - target: {fileID: 1590248167663008117, guid: f157f01b725890246bf769ececd52c35, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 382808611}
+      objectReference: {fileID: 758132667}
     - target: {fileID: 1590248167663008117, guid: f157f01b725890246bf769ececd52c35, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: functionButton7
       objectReference: {fileID: 0}
     - target: {fileID: 1590248167663008117, guid: f157f01b725890246bf769ececd52c35, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: ButtonStateScript, Assembly-CSharp
+      value: ButtonState, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1590248167663008117, guid: f157f01b725890246bf769ececd52c35, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -2367,8 +2332,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 382808611}
-        m_TargetAssemblyTypeName: ButtonStateScript, Assembly-CSharp
+      - m_Target: {fileID: 758132667}
+        m_TargetAssemblyTypeName: ButtonState, Assembly-CSharp
         m_MethodName: CopyText
         m_Mode: 1
         m_Arguments:
@@ -2518,14 +2483,14 @@ PrefabInstance:
     - target: {fileID: 1590248167663008117, guid: f157f01b725890246bf769ececd52c35, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 382808611}
+      objectReference: {fileID: 758132667}
     - target: {fileID: 1590248167663008117, guid: f157f01b725890246bf769ececd52c35, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: functionButton3
       objectReference: {fileID: 0}
     - target: {fileID: 1590248167663008117, guid: f157f01b725890246bf769ececd52c35, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: ButtonStateScript, Assembly-CSharp
+      value: ButtonState, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1590248167663008117, guid: f157f01b725890246bf769ececd52c35, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -2999,7 +2964,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 758132660}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 592900572e00921429945345e9d9dde8, type: 3}
+  m_Script: {fileID: 11500000, guid: 0050c23cb69bd7348a1dd0e11ed823df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   FunctionButtons:
@@ -3300,14 +3265,14 @@ PrefabInstance:
     - target: {fileID: 1590248167663008117, guid: f157f01b725890246bf769ececd52c35, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 382808611}
+      objectReference: {fileID: 758132667}
     - target: {fileID: 1590248167663008117, guid: f157f01b725890246bf769ececd52c35, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: functionButton5
       objectReference: {fileID: 0}
     - target: {fileID: 1590248167663008117, guid: f157f01b725890246bf769ececd52c35, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: ButtonStateScript, Assembly-CSharp
+      value: ButtonState, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1590248167663008117, guid: f157f01b725890246bf769ececd52c35, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -4666,7 +4631,7 @@ PrefabInstance:
     - target: {fileID: 1590248167663008117, guid: f157f01b725890246bf769ececd52c35, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 382808611}
+      objectReference: {fileID: 758132667}
     - target: {fileID: 1590248167663008117, guid: f157f01b725890246bf769ececd52c35, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -4677,7 +4642,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1590248167663008117, guid: f157f01b725890246bf769ececd52c35, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: ButtonStateScript, Assembly-CSharp
+      value: ButtonState, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1590248167663008117, guid: f157f01b725890246bf769ececd52c35, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -4726,7 +4691,7 @@ PrefabInstance:
     - target: {fileID: 4019340448275288592, guid: f157f01b725890246bf769ececd52c35, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Target
       value: 
-      objectReference: {fileID: 382808611}
+      objectReference: {fileID: 0}
     - target: {fileID: 4019340448275288592, guid: f157f01b725890246bf769ececd52c35, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2

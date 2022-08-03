@@ -54,7 +54,7 @@ public class ButtonState: MonoBehaviour
             endPoints[i] = Instantiate(measurementPointPrefab, Vector3.zero, Quaternion.identity);
             startPoints[i].SetActive(false);
             endPoints[i].SetActive(false);
-            measureLines[i] = new GameObject().AddComponent<LineRenderer>();
+            measureLines[i] = GetComponent<LineRenderer>();
         }
         ActiveButton = -1;
         //Debug.Log("Set ActiveButton to -1");
@@ -178,7 +178,7 @@ public class ButtonState: MonoBehaviour
         //Somehow we are stuck here
         if(ActiveButton >= 0)
         {
-            Debug.Log("A Button is active");
+            //Debug.Log("A Button is active");
 
             //At this point it will be necessary to change the colors of startPoints[ActiveButton], endPoints[ActiveButton], measureLines[ActiveButton]
             //to the colors of the selected FunctionButtons[ActiveButton]
