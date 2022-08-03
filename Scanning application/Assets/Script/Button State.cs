@@ -6,7 +6,7 @@ using TMPro;
 using UnityEngine.XR.ARFoundation;
 
 [RequireComponent(typeof(ARRaycastManager))]
-public class ButtonStateScript : MonoBehaviour
+public class ButtonState: MonoBehaviour
 {
     private static int NumberOfButtons = 8;
     public GameObject[] FunctionButtons = new GameObject[NumberOfButtons];
@@ -54,7 +54,7 @@ public class ButtonStateScript : MonoBehaviour
             endPoints[i] = Instantiate(measurementPointPrefab, Vector3.zero, Quaternion.identity);
             startPoints[i].SetActive(false);
             endPoints[i].SetActive(false);
-            measureLines[i] = GetComponent<LineRenderer>();
+            measureLines[i] = new GameObject().AddComponent<LineRenderer>();
         }
         ActiveButton = -1;
         //Debug.Log("Set ActiveButton to -1");
@@ -133,6 +133,18 @@ public class ButtonStateScript : MonoBehaviour
         UniClipboard.SetText(text);
         Debug.Log(text);
     }
+    public void ChangeToButtonColor(GameObject GetColorHere, GameObject PutColorHere)
+    {
+        //Get the color from you buttons material component
+        //Vector4 myButtonsColor = GetColorHere.image.color;
+        /*Get the material component from your game object 
+        and set its color to the new color defined above*/
+        //PutColorHere.GetComponent<Renderer>().material.SetColor("_Color", myButtonsColor);
+
+    }
+
+    
+    
     
 
     
@@ -140,7 +152,7 @@ public class ButtonStateScript : MonoBehaviour
 
 
 
-    //This is the Screenshot Function, I don't undestand how it works, I got it from the Documentation pageof NativeGallery: https://github.com/yasirkula/UnityNativeGallery
+    //This is the Screenshot Function, I don't undestand how it works, I got it from the Documentation page of NativeGallery: https://github.com/yasirkula/UnityNativeGallery
     private IEnumerator TakeScreenshotAndSave()
     {
         yield return new WaitForEndOfFrame();
