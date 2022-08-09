@@ -137,10 +137,11 @@ public class ButtonState: MonoBehaviour
     public void ChangeToButtonColor(GameObject GetColorHere, GameObject PutColorHere)
     {
         //Get the color from you buttons material component
-        //Vector4 myButtonsColor = GetColorHere.image.color;
+        Vector4 myButtonColor = GetColorHere.GetComponent<Image>().color;
         /*Get the material component from your game object 
         and set its color to the new color defined above*/
-        //PutColorHere.GetComponent<Renderer>().material.SetColor("_Color", myButtonsColor);
+        Debug.Log("Color of the Button: "+myButtonColor);
+        PutColorHere.GetComponent<Renderer>().material.SetColor("_Color", myButtonColor);
 
     }
 
@@ -215,6 +216,8 @@ public class ButtonState: MonoBehaviour
                     {
                         //Debug.Log("arRaycastManager hits");
                         startPoints[ActiveButton].SetActive(true);
+                        ChangeToButtonColor(FunctionButtons[ActiveButton], startPoints[ActiveButton]);
+
 
                         Pose hitPose = hits[0].pose;
                         startPoints[ActiveButton].transform.SetPositionAndRotation(hitPose.position, hitPose.rotation);
@@ -229,7 +232,7 @@ public class ButtonState: MonoBehaviour
                     {
                         measureLines[ActiveButton].gameObject.SetActive(true);
                         endPoints[ActiveButton].SetActive(true);
-
+                        ChangeToButtonColor(FunctionButtons[ActiveButton], endPoints[ActiveButton]);
                         Pose hitPose = hits[0].pose;
                         endPoints[ActiveButton].transform.SetPositionAndRotation(hitPose.position, hitPose.rotation);
                     }
