@@ -144,12 +144,22 @@ public class ButtonState: MonoBehaviour
         PutColorHere.GetComponent<Renderer>().material.SetColor("_Color", myButtonColor);
 
     }
+    public void ChangeLineRendererColor(GameObject GetColorHere, LineRenderer PutColorHere)
+    {
+        //Get the color from you buttons material component
+        Vector4 myButtonColor = GetColorHere.GetComponent<Image>().color;
+        /*Get the material component from your game object 
+        and set its color to the new color defined above*/
+        Debug.Log("Color of the Button: " + myButtonColor);
+        PutColorHere.GetComponent<Renderer>().material.SetColor("_Color", myButtonColor);
+        //PutColorHere.SetColor("_Color", myButtonColor);
+    }
 
-    
-    
-    
 
-    
+
+
+
+
 
 
 
@@ -238,15 +248,70 @@ public class ButtonState: MonoBehaviour
                     }
                 }
             }
-
-            if (startPoints[ActiveButton].activeSelf && endPoints[ActiveButton].activeSelf)
+            if (startPoints[0].activeSelf && endPoints[0].activeSelf)
             {
-                measureLines[ActiveButton].SetPosition(0, startPoints[ActiveButton].transform.position);
-                measureLines[ActiveButton].SetPosition(1, endPoints[ActiveButton].transform.position);
-                //The following line of Code should work
-                FunctionButtons[ActiveButton].GetComponentInChildren<TMP_Text>().text = $"Distance: {(Vector3.Distance(startPoints[ActiveButton].transform.position, endPoints[ActiveButton].transform.position) * measurementFactor).ToString("F2")} cm";
-
+                measureLines[0].SetPosition(0, startPoints[0].transform.position);
+                measureLines[0].SetPosition(1, endPoints[0].transform.position);
+                ChangeLineRendererColor(FunctionButtons[0], measureLines[0]);
+                FunctionButtons[0].GetComponentInChildren<TMP_Text>().text = $"Distance 1: {(Vector3.Distance(startPoints[0].transform.position, endPoints[0].transform.position) * measurementFactor).ToString("F2")} cm";
             }
+            if (startPoints[1].activeSelf && endPoints[1].activeSelf)
+            {
+                measureLines[1].SetPosition(0, startPoints[1].transform.position);
+                measureLines[1].SetPosition(1, endPoints[1].transform.position);
+                ChangeLineRendererColor(FunctionButtons[1], measureLines[1]);
+                FunctionButtons[1].GetComponentInChildren<TMP_Text>().text = $"Distance 2: {(Vector3.Distance(startPoints[1].transform.position, endPoints[1].transform.position) * measurementFactor).ToString("F2")} cm";
+            }
+            if (startPoints[2].activeSelf && endPoints[2].activeSelf)
+            {
+                measureLines[2].SetPosition(0, startPoints[2].transform.position);
+                measureLines[2].SetPosition(1, endPoints[2].transform.position);
+                ChangeLineRendererColor(FunctionButtons[2], measureLines[2]);
+                FunctionButtons[2].GetComponentInChildren<TMP_Text>().text = $"Distance 3: {(Vector3.Distance(startPoints[2].transform.position, endPoints[2].transform.position) * measurementFactor).ToString("F2")} cm";
+            }
+            if (startPoints[3].activeSelf && endPoints[3].activeSelf)
+            {
+                measureLines[3].SetPosition(0, startPoints[3].transform.position);
+                measureLines[3].SetPosition(1, endPoints[3].transform.position);
+                ChangeLineRendererColor(FunctionButtons[3], measureLines[3]);
+                FunctionButtons[3].GetComponentInChildren<TMP_Text>().text = $"Distance 4: {(Vector3.Distance(startPoints[3].transform.position, endPoints[3].transform.position) * measurementFactor).ToString("F2")} cm";
+            }
+            if (startPoints[4].activeSelf && endPoints[4].activeSelf)
+            {
+                measureLines[4].SetPosition(0, startPoints[4].transform.position);
+                measureLines[4].SetPosition(1, endPoints[4].transform.position);
+                ChangeLineRendererColor(FunctionButtons[4], measureLines[4]);
+                FunctionButtons[4].GetComponentInChildren<TMP_Text>().text = $"Distance 5: {(Vector3.Distance(startPoints[4].transform.position, endPoints[4].transform.position) * measurementFactor).ToString("F2")} cm";
+            }
+            if (startPoints[5].activeSelf && endPoints[5].activeSelf)
+            {
+                measureLines[5].SetPosition(0, startPoints[5].transform.position);
+                measureLines[5].SetPosition(1, endPoints[5].transform.position);
+                ChangeLineRendererColor(FunctionButtons[5], measureLines[5]);
+                FunctionButtons[5].GetComponentInChildren<TMP_Text>().text = $"Distance 6: {(Vector3.Distance(startPoints[5].transform.position, endPoints[5].transform.position) * measurementFactor).ToString("F2")} cm";
+            }
+            if (startPoints[6].activeSelf && endPoints[6].activeSelf)
+            {
+                measureLines[6].SetPosition(0, startPoints[6].transform.position);
+                measureLines[6].SetPosition(1, endPoints[6].transform.position);
+                ChangeLineRendererColor(FunctionButtons[6], measureLines[6]);
+                FunctionButtons[6].GetComponentInChildren<TMP_Text>().text = $"Distance 7: {(Vector3.Distance(startPoints[6].transform.position, endPoints[6].transform.position) * measurementFactor).ToString("F2")} cm";
+            }
+            if (startPoints[7].activeSelf && endPoints[7].activeSelf)
+            {
+                measureLines[7].SetPosition(0, startPoints[7].transform.position);
+                measureLines[7].SetPosition(1, endPoints[7].transform.position);
+                ChangeLineRendererColor(FunctionButtons[7], measureLines[7]);
+                FunctionButtons[7].GetComponentInChildren<TMP_Text>().text = $"Distance 8: {(Vector3.Distance(startPoints[7].transform.position, endPoints[7].transform.position) * measurementFactor).ToString("F2")} cm";
+            }
+            /*if (startPoints[0].activeSelf && endPoints[0].activeSelf)
+            {
+                measureLines[0].SetPosition(0, startPoints[0].transform.position);
+                measureLines[0].SetPosition(1, endPoints[0].transform.position);
+                //The following line of Code should work
+                FunctionButtons[0].GetComponentInChildren<TMP_Text>().text = $"Distance: {(Vector3.Distance(startPoints[0].transform.position, endPoints[0].transform.position) * measurementFactor).ToString("F2")} cm";
+
+            }*/
         }
 
 
