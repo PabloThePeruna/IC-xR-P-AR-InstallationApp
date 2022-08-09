@@ -29,6 +29,7 @@ public class ButtonState: MonoBehaviour
     private GameObject[] endPoints = new GameObject[NumberOfButtons];
 
     private Vector2 touchPosition = default;
+    private Vector2 touch2Position = default;
 
     private static List<ARRaycastHit> hits = new List<ARRaycastHit>();
 
@@ -55,7 +56,8 @@ public class ButtonState: MonoBehaviour
             endPoints[i] = Instantiate(measurementPointPrefab, Vector3.zero, Quaternion.identity);
             startPoints[i].SetActive(false);
             endPoints[i].SetActive(false);
-            measureLines[i] = GetComponent<LineRenderer>();
+            //measureLines[i] = GetComponent<LineRenderer>();
+            measureLines[i]=FunctionButtons[i].GetComponentInChildren<LineRenderer>();
         }
         ActiveButton = -1;
         //Debug.Log("Set ActiveButton to -1");
@@ -154,10 +156,124 @@ public class ButtonState: MonoBehaviour
         PutColorHere.GetComponent<Renderer>().material.SetColor("_Color", myButtonColor);
         //PutColorHere.SetColor("_Color", myButtonColor);
     }
+    public void TwoHandedTouchInput()
+    {
+        if (Input.touchCount == 2)
+        {
+            //Debug.Log("TouchCount > 0");
+            Touch touch = Input.GetTouch(0);
+            Touch touch2 = Input.GetTouch(1);
+
+            //Debug.Log("TouchPhase.Began");
+            touchPosition = touch.position;
+
+            if (arRaycastManager.Raycast(touchPosition, hits, UnityEngine.XR.ARSubsystems.TrackableType.PlaneWithinPolygon))
+            {
+                //Debug.Log("arRaycastManager hits");
+                startPoints[ActiveButton].SetActive(true);
+                ChangeToButtonColor(FunctionButtons[ActiveButton], startPoints[ActiveButton]);
+
+
+                Pose hitPose = hits[0].pose;
+                startPoints[ActiveButton].transform.SetPositionAndRotation(hitPose.position, hitPose.rotation);
+            }
 
 
 
+            touch2Position = touch2.position;
 
+            if (arRaycastManager.Raycast(touch2Position, hits, UnityEngine.XR.ARSubsystems.TrackableType.PlaneWithinPolygon))
+            {
+                measureLines[ActiveButton].gameObject.SetActive(true);
+                endPoints[ActiveButton].SetActive(true);
+                ChangeToButtonColor(FunctionButtons[ActiveButton], endPoints[ActiveButton]);
+                Pose hitPose = hits[0].pose;
+                endPoints[ActiveButton].transform.SetPositionAndRotation(hitPose.position, hitPose.rotation);
+            }
+        }
+    }
+    public void SingleHandedTouchInput()
+    {
+        if (Input.touchCount > 0)
+        {
+            //Debug.Log("TouchCount > 0");
+            Touch touch = Input.GetTouch(0);
+            if (touch.phase == TouchPhase.Began)
+            {
+                //Debug.Log("TouchPhase.Began");
+                touchPosition = touch.position;
+
+                if (arRaycastManager.Raycast(touchPosition, hits, UnityEngine.XR.ARSubsystems.TrackableType.PlaneWithinPolygon))
+                {
+                    //Debug.Log("arRaycastManager hits");
+                    startPoints[ActiveButton].SetActive(true);
+                    ChangeToButtonColor(FunctionButtons[ActiveButton], startPoints[ActiveButton]);
+
+
+                    Pose hitPose = hits[0].pose;
+                    startPoints[ActiveButton].transform.SetPositionAndRotation(hitPose.position, hitPose.rotation);
+                }
+            }
+
+            if (touch.phase == TouchPhase.Moved)
+            {
+                touchPosition = touch.position;
+
+                if (arRaycastManager.Raycast(touchPosition, hits, UnityEngine.XR.ARSubsystems.TrackableType.PlaneWithinPolygon))
+                {
+                    measureLines[ActiveButton].gameObject.SetActive(true);
+                    endPoints[ActiveButton].SetActive(true);
+                    ChangeToButtonColor(FunctionButtons[ActiveButton], endPoints[ActiveButton]);
+                    Pose hitPose = hits[0].pose;
+                    endPoints[ActiveButton].transform.SetPositionAndRotation(hitPose.position, hitPose.rotation);
+                }
+            }
+        }
+    }
+    public void LimitedAreaTouchInput()
+    {
+        if (Input.touchCount > 0)
+        {
+            //Debug.Log("TouchCount > 0");
+            Touch touch = Input.GetTouch(0);
+
+            //Here we only allow the touch input through, if it is in the area of the screen we don't use for buttons
+            if (touch.position.y <= 100 || touch.position.x < 600&&touch.position.y<600) { }
+            else
+            { 
+                if (touch.phase == TouchPhase.Began)
+                {
+                    //Debug.Log("TouchPhase.Began");
+                    touchPosition = touch.position;
+
+                    if (arRaycastManager.Raycast(touchPosition, hits, UnityEngine.XR.ARSubsystems.TrackableType.PlaneWithinPolygon))
+                    {
+                        //Debug.Log("arRaycastManager hits");
+                        startPoints[ActiveButton].SetActive(true);
+                        ChangeToButtonColor(FunctionButtons[ActiveButton], startPoints[ActiveButton]);
+
+
+                        Pose hitPose = hits[0].pose;
+                        startPoints[ActiveButton].transform.SetPositionAndRotation(hitPose.position, hitPose.rotation);
+                    }
+                }
+
+                if (touch.phase == TouchPhase.Moved)
+                {
+                    touchPosition = touch.position;
+
+                    if (arRaycastManager.Raycast(touchPosition, hits, UnityEngine.XR.ARSubsystems.TrackableType.PlaneWithinPolygon))
+                    {
+                        measureLines[ActiveButton].gameObject.SetActive(true);
+                        endPoints[ActiveButton].SetActive(true);
+                        ChangeToButtonColor(FunctionButtons[ActiveButton], endPoints[ActiveButton]);
+                        Pose hitPose = hits[0].pose;
+                        endPoints[ActiveButton].transform.SetPositionAndRotation(hitPose.position, hitPose.rotation);
+                    }
+                }
+            }
+        }
+    }
 
 
 
@@ -213,43 +329,18 @@ public class ButtonState: MonoBehaviour
 
             //Highlight the selected FunctionButtons[ActiveButton]
 
-            if (Input.touchCount > 0)
-            {
-                //Debug.Log("TouchCount > 0");
-                Touch touch = Input.GetTouch(0);
-                if (touch.phase == TouchPhase.Began)
-                {
-                    //Debug.Log("TouchPhase.Began");
-                    touchPosition = touch.position;
+            //This is the function to move the measurement points with two fingers at once, which causes problems if what you want to measure can't be seen on screen as a whole
+            //TwoHandedTouchInput();
 
-                    if (arRaycastManager.Raycast(touchPosition, hits, UnityEngine.XR.ARSubsystems.TrackableType.PlaneWithinPolygon))
-                    {
-                        //Debug.Log("arRaycastManager hits");
-                        startPoints[ActiveButton].SetActive(true);
-                        ChangeToButtonColor(FunctionButtons[ActiveButton], startPoints[ActiveButton]);
+            //This is the single finger option, which causes problems with the buttons
+            //SingleHandedTouchInput();
 
-
-                        Pose hitPose = hits[0].pose;
-                        startPoints[ActiveButton].transform.SetPositionAndRotation(hitPose.position, hitPose.rotation);
-                    }
-                }
-
-                if (touch.phase == TouchPhase.Moved)
-                {
-                    touchPosition = touch.position;
-
-                    if (arRaycastManager.Raycast(touchPosition, hits, UnityEngine.XR.ARSubsystems.TrackableType.PlaneWithinPolygon))
-                    {
-                        measureLines[ActiveButton].gameObject.SetActive(true);
-                        endPoints[ActiveButton].SetActive(true);
-                        ChangeToButtonColor(FunctionButtons[ActiveButton], endPoints[ActiveButton]);
-                        Pose hitPose = hits[0].pose;
-                        endPoints[ActiveButton].transform.SetPositionAndRotation(hitPose.position, hitPose.rotation);
-                    }
-                }
-            }
+            //This is the single finger option with limited touch area
+            LimitedAreaTouchInput();
+            
             if (startPoints[0].activeSelf && endPoints[0].activeSelf)
             {
+                //if (!measureLines[0].activeSelf) { measureLines[0].SetActive(true); }
                 measureLines[0].SetPosition(0, startPoints[0].transform.position);
                 measureLines[0].SetPosition(1, endPoints[0].transform.position);
                 ChangeLineRendererColor(FunctionButtons[0], measureLines[0]);
@@ -257,6 +348,7 @@ public class ButtonState: MonoBehaviour
             }
             if (startPoints[1].activeSelf && endPoints[1].activeSelf)
             {
+                //if (!measureLines[1].activeSelf) { measureLines[1].SetActive(true); }
                 measureLines[1].SetPosition(0, startPoints[1].transform.position);
                 measureLines[1].SetPosition(1, endPoints[1].transform.position);
                 ChangeLineRendererColor(FunctionButtons[1], measureLines[1]);
@@ -264,6 +356,7 @@ public class ButtonState: MonoBehaviour
             }
             if (startPoints[2].activeSelf && endPoints[2].activeSelf)
             {
+                //if (!measureLines[2].activeSelf) { measureLines[2].SetActive(true); }
                 measureLines[2].SetPosition(0, startPoints[2].transform.position);
                 measureLines[2].SetPosition(1, endPoints[2].transform.position);
                 ChangeLineRendererColor(FunctionButtons[2], measureLines[2]);
@@ -271,6 +364,7 @@ public class ButtonState: MonoBehaviour
             }
             if (startPoints[3].activeSelf && endPoints[3].activeSelf)
             {
+                //if (!measureLines[3].activeSelf) { measureLines[3].SetActive(true); }
                 measureLines[3].SetPosition(0, startPoints[3].transform.position);
                 measureLines[3].SetPosition(1, endPoints[3].transform.position);
                 ChangeLineRendererColor(FunctionButtons[3], measureLines[3]);
@@ -278,6 +372,7 @@ public class ButtonState: MonoBehaviour
             }
             if (startPoints[4].activeSelf && endPoints[4].activeSelf)
             {
+                //if (!measureLines[4].activeSelf) { measureLines[4].SetActive(true); }
                 measureLines[4].SetPosition(0, startPoints[4].transform.position);
                 measureLines[4].SetPosition(1, endPoints[4].transform.position);
                 ChangeLineRendererColor(FunctionButtons[4], measureLines[4]);
@@ -285,6 +380,7 @@ public class ButtonState: MonoBehaviour
             }
             if (startPoints[5].activeSelf && endPoints[5].activeSelf)
             {
+                //if (!measureLines[5].activeSelf) { measureLines[5].SetActive(true); }
                 measureLines[5].SetPosition(0, startPoints[5].transform.position);
                 measureLines[5].SetPosition(1, endPoints[5].transform.position);
                 ChangeLineRendererColor(FunctionButtons[5], measureLines[5]);
@@ -292,6 +388,7 @@ public class ButtonState: MonoBehaviour
             }
             if (startPoints[6].activeSelf && endPoints[6].activeSelf)
             {
+                //if (!measureLines[6].activeSelf) { measureLines[6].SetActive(true); }
                 measureLines[6].SetPosition(0, startPoints[6].transform.position);
                 measureLines[6].SetPosition(1, endPoints[6].transform.position);
                 ChangeLineRendererColor(FunctionButtons[6], measureLines[6]);
@@ -299,6 +396,7 @@ public class ButtonState: MonoBehaviour
             }
             if (startPoints[7].activeSelf && endPoints[7].activeSelf)
             {
+                //if (!measureLines[7].activeSelf) { measureLines[7].SetActive(true); }
                 measureLines[7].SetPosition(0, startPoints[7].transform.position);
                 measureLines[7].SetPosition(1, endPoints[7].transform.position);
                 ChangeLineRendererColor(FunctionButtons[7], measureLines[7]);
