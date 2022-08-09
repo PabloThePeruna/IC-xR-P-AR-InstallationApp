@@ -8,6 +8,7 @@ using UnityEngine.XR.ARFoundation;
 [RequireComponent(typeof(ARRaycastManager))]
 public class ButtonState: MonoBehaviour
 {
+    public GameObject screenshotScreen;
     private static int NumberOfButtons = 8;
     public GameObject[] FunctionButtons = new GameObject[NumberOfButtons];
     //public Text[] FunctionButtonText=new Text[NumberOfButtons];
@@ -42,7 +43,7 @@ public class ButtonState: MonoBehaviour
             CloseButtons[i].SetActive(false);
             FunctionButtons[i].SetActive(false);
         }
-        ScreenshotTakenButton.SetActive(false);
+        //ScreenshotTakenButton.SetActive(false);
 
         //From here is Stuff for the multiple Measurements
         arRaycastManager = GetComponent<ARRaycastManager>();
@@ -163,15 +164,29 @@ public class ButtonState: MonoBehaviour
 
         // Save the screenshot to Gallery/Photos
         NativeGallery.Permission permission = NativeGallery.SaveImageToGallery(ss, "GalleryTest", "Image.png", (success, path) => Debug.Log("Media save result: " + success + " " + path));
-        ScreenshotTakenButton.SetActive(true);
+        //ScreenshotTakenButton.SetActive(true);
         //Debug.Log("Permission result: " + permission);
+        screenshotScreen.SetActive(true);
+        StartCoroutine(FadeOut());
 
         // To avoid memory leaks
         Destroy(ss);
     }
+    IEnumerator FadeOut()
+    {
+        // loop over 1 second backwards
+        for (float i = 1; i >= 0; i -= Time.deltaTime)
+        {
+            // set color with i as alpha
+            screenshotScreen.GetComponent<Image>().color = new Color(1, 1, 1, i);
+            yield return null;
+        }
+
+        screenshotScreen.SetActive(false);
+    }
 
 
-    
+
     void Update()
     {
         //Debug.Log("ActiveButton = "+ActiveButton);
