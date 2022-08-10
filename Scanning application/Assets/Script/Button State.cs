@@ -58,6 +58,7 @@ public class ButtonState: MonoBehaviour
             endPoints[i].SetActive(false);
             //measureLines[i] = GetComponent<LineRenderer>();
             measureLines[i]=FunctionButtons[i].GetComponentInChildren<LineRenderer>();
+            //Debug.Log(measureLines[i]);
         }
         ActiveButton = -1;
         //Debug.Log("Set ActiveButton to -1");
@@ -184,7 +185,7 @@ public class ButtonState: MonoBehaviour
 
             if (arRaycastManager.Raycast(touch2Position, hits, UnityEngine.XR.ARSubsystems.TrackableType.PlaneWithinPolygon))
             {
-                measureLines[ActiveButton].gameObject.SetActive(true);
+                //measureLines[ActiveButton].gameObject.SetActive(true);
                 endPoints[ActiveButton].SetActive(true);
                 ChangeToButtonColor(FunctionButtons[ActiveButton], endPoints[ActiveButton]);
                 Pose hitPose = hits[0].pose;
@@ -221,7 +222,7 @@ public class ButtonState: MonoBehaviour
 
                 if (arRaycastManager.Raycast(touchPosition, hits, UnityEngine.XR.ARSubsystems.TrackableType.PlaneWithinPolygon))
                 {
-                    measureLines[ActiveButton].gameObject.SetActive(true);
+                    //measureLines[ActiveButton].gameObject.SetActive(true);
                     endPoints[ActiveButton].SetActive(true);
                     ChangeToButtonColor(FunctionButtons[ActiveButton], endPoints[ActiveButton]);
                     Pose hitPose = hits[0].pose;
@@ -264,7 +265,7 @@ public class ButtonState: MonoBehaviour
 
                     if (arRaycastManager.Raycast(touchPosition, hits, UnityEngine.XR.ARSubsystems.TrackableType.PlaneWithinPolygon))
                     {
-                        measureLines[ActiveButton].gameObject.SetActive(true);
+                        //measureLines[ActiveButton].gameObject.SetActive(true);
                         endPoints[ActiveButton].SetActive(true);
                         ChangeToButtonColor(FunctionButtons[ActiveButton], endPoints[ActiveButton]);
                         Pose hitPose = hits[0].pose;
