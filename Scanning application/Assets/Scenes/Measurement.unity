@@ -3065,6 +3065,7 @@ MonoBehaviour:
   - {fileID: 793529301}
   ScreenshotTakenButton: {fileID: 952836992}
   measurementPointPrefab: {fileID: 2071381972608095454, guid: 8fb2ea08c01e0448c80b27ee8886a801, type: 3}
+  LineRendererPrefab: {fileID: 4990739064171819206, guid: d55e7005d130a8b49b7478a4c07647bf, type: 3}
   measurementFactor: 100
   arCameraManager: {fileID: 1737330651}
 --- !u!1 &793529301 stripped

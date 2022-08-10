@@ -16,6 +16,7 @@ public class ButtonState: MonoBehaviour
     public GameObject ScreenshotTakenButton;
     //From here on come measuring components
     public GameObject measurementPointPrefab;
+    public LineRenderer LineRendererPrefab;
     public float measurementFactor = 100f;
 
     [SerializeField]
@@ -34,6 +35,7 @@ public class ButtonState: MonoBehaviour
     private static List<ARRaycastHit> hits = new List<ARRaycastHit>();
 
     private static int ActiveButton;
+    private LineRenderer[] LRStorage = new LineRenderer[NumberOfButtons];
 
 
 
@@ -49,6 +51,11 @@ public class ButtonState: MonoBehaviour
         //From here is Stuff for the multiple Measurements
         arRaycastManager = GetComponent<ARRaycastManager>();
 
+        for (int i = 0; i < NumberOfButtons; i++)
+        {
+            LRStorage[i] = Instantiate(LineRendererPrefab);
+            LRStorage[i].gameObject.SetActive(false);
+        }
 
         for (int i = 0; i < NumberOfButtons; i++)
         {
@@ -153,8 +160,8 @@ public class ButtonState: MonoBehaviour
         Vector4 myButtonColor = GetColorHere.GetComponent<Image>().color;
         /*Get the material component from your game object 
         and set its color to the new color defined above*/
-        Debug.Log("Color of the Button: " + myButtonColor);
-        PutColorHere.GetComponent<Renderer>().material.SetColor("_Color", myButtonColor);
+        //Debug.Log("Color of the Button: " + myButtonColor);
+        PutColorHere.SetColors(myButtonColor, myButtonColor);
         //PutColorHere.SetColor("_Color", myButtonColor);
     }
     public void TwoHandedTouchInput()
@@ -266,10 +273,14 @@ public class ButtonState: MonoBehaviour
                     if (arRaycastManager.Raycast(touchPosition, hits, UnityEngine.XR.ARSubsystems.TrackableType.PlaneWithinPolygon))
                     {
                         //measureLines[ActiveButton].gameObject.SetActive(true);
+                        LRStorage[ActiveButton].gameObject.SetActive(true);
                         endPoints[ActiveButton].SetActive(true);
-                        ChangeToButtonColor(FunctionButtons[ActiveButton], endPoints[ActiveButton]);
                         Pose hitPose = hits[0].pose;
                         endPoints[ActiveButton].transform.SetPositionAndRotation(hitPose.position, hitPose.rotation);
+                        ChangeToButtonColor(FunctionButtons[ActiveButton], endPoints[ActiveButton]);
+                        ChangeLineRendererColor(FunctionButtons[ActiveButton], measureLines[ActiveButton]);
+                        LRStorage[ActiveButton].SetPosition(0, startPoints[ActiveButton].transform.position);
+                        LRStorage[ActiveButton].SetPosition(1, endPoints[ActiveButton].transform.position);
                     }
                 }
             }
@@ -338,7 +349,7 @@ public class ButtonState: MonoBehaviour
 
             //This is the single finger option with limited touch area
             LimitedAreaTouchInput();
-            
+            /*
             if (startPoints[0].activeSelf && endPoints[0].activeSelf)
             {
                 //if (!measureLines[0].activeSelf) { measureLines[0].SetActive(true); }
@@ -403,6 +414,7 @@ public class ButtonState: MonoBehaviour
                 ChangeLineRendererColor(FunctionButtons[7], measureLines[7]);
                 FunctionButtons[7].GetComponentInChildren<TMP_Text>().text = $"Distance 8: {(Vector3.Distance(startPoints[7].transform.position, endPoints[7].transform.position) * measurementFactor).ToString("F2")} cm";
             }
+            */
             /*if (startPoints[0].activeSelf && endPoints[0].activeSelf)
             {
                 measureLines[0].SetPosition(0, startPoints[0].transform.position);
