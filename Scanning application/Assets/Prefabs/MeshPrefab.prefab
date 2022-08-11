@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7835039868697781920}
   - component: {fileID: 5155985286564811245}
   - component: {fileID: 4712404132809807933}
+  - component: {fileID: 5491136597169555115}
   m_Layer: 0
   m_Name: MeshPrefab
   m_TagString: Untagged
@@ -93,7 +94,21 @@ BoxCollider:
   m_GameObject: {fileID: 3171208480486704300}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5491136597169555115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3171208480486704300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4679a0b45237a24b9d509ca393bbf2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Notice: {r: 1, g: 0, b: 0, a: 0.5019608}
+  Standard: {r: 1, g: 1, b: 1, a: 0.5019608}

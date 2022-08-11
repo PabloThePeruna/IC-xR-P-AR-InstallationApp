@@ -5,6 +5,7 @@ public class VerticesCollider : MonoBehaviour
 {
     public Color Notice = new Color(1, 0, 0, 1);
     public Color Standard = new Color(1,1,1,1);
+    //public Mesh mesh;
 
     void Update()
     {
