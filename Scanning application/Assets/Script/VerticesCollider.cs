@@ -1,13 +1,28 @@
 using UnityEngine;
 using System.Collections;
 
+
+//This script needs to be attached to the mesh prefab used by the Mesh Manager
 public class VerticesCollider : MonoBehaviour
 {
+    [Tooltip("The colour that appears if there is collision")]
     public Color Notice = new Color(1, 0, 0, 1);
-    public Color Standard = new Color(1,1,1,1);
-    //public Mesh mesh;
 
-    void Update()
+    [Tooltip("The standard scanning colour")]
+    public Color Standard = new Color(1,1,1,1);
+
+    [Tooltip("The colour that the part of the mesh without collision takes during collision")]
+    public Color NonColliding = new Color(0, 0, 0, 0);
+
+    private static bool colliding = false;
+    void Start()
+    {
+        //We only Scan the Mesh every 0.1 seconds for collision, for Performance reasons
+        //This may not be strictly necessary but it definitely can't hurt
+        InvokeRepeating("ScanMeshForCollision", 0.5f, 0.1f);
+    }
+
+    void ScanMeshForCollision()
     {
 
         Mesh mesh = GetComponent<MeshFilter>().mesh;
@@ -21,7 +36,13 @@ public class VerticesCollider : MonoBehaviour
             {
                 //Debug.Log("colliding");
                 colors[i] = Notice;
+                colliding = true;
     
+            }
+            else if(colliding==true)
+            {
+                //Debug.Log("No collision here");
+                colors[i] = NonColliding;
             }
             else
             {
