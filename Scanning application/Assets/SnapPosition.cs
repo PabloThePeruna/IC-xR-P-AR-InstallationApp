@@ -23,7 +23,7 @@ public class SnapPosition : MonoBehaviour
         Vector3 PlaneNormal = MyARPlane.normal;//This can probably be placed in the recalculation of the vector2
         Vector3 PlaneOrigin = MyARPlane.transform.position;
         
-        BoundaryPointsInPlaneSpace = MyARPlane.boundary;
+        BoundaryPointsInPlaneSpace = MyARPlane.boundary.ToArray();
             for (int i = 0; i < BoundaryPointsInPlaneSpace.Length; i++)
             {
                 if (Vector3.Distance(transform.position, BoundaryPointsInPlaneSpace[i]) < 0.01f)
