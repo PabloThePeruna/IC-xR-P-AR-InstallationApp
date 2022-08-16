@@ -19,10 +19,10 @@ public class VerticesCollider : MonoBehaviour
     {
         //We only Scan the Mesh every 0.1 seconds for collision, for Performance reasons
         //This may not be strictly necessary but it definitely can't hurt
-        InvokeRepeating("ScanMeshForCollision", 0.5f, 0.1f);
+        //InvokeRepeating("ScanMeshForCollision", 0.5f, 0.1f);//While this may be a nice idea to improve performance, it causes the mesh to turn white and flashing. Unless this can be eliminted, use update()
     }
 
-    void ScanMeshForCollision()
+    void Update()
     {
 
         Mesh mesh = GetComponent<MeshFilter>().mesh;
