@@ -2637,6 +2637,7 @@ GameObject:
   - component: {fileID: 642948562}
   - component: {fileID: 642948567}
   - component: {fileID: 642948568}
+  - component: {fileID: 642948569}
   m_Layer: 0
   m_Name: AR Camera
   m_TagString: MainCamera
@@ -2785,6 +2786,23 @@ MonoBehaviour:
   m_TrackingType: 0
   m_UpdateType: 0
   m_UseRelativeTransform: 1
+--- !u!114 &642948569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 642948560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b15f82cc229284894964d2d30806969d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HumanSegmentationStencilMode: 0
+  m_HumanSegmentationDepthMode: 0
+  m_EnvironmentDepthMode: 3
+  m_EnvironmentDepthTemporalSmoothing: 1
+  m_OcclusionPreferenceMode: 0
 --- !u!1 &659220157
 GameObject:
   m_ObjectHideFlags: 0
@@ -4207,12 +4225,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   screenshotScreen: {fileID: 1303727724}
   BoilerList:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 7794937211493263697, guid: f163daa1bd85c0a4eaa900e66319789e, type: 3}
+  - {fileID: 2774822398195710223, guid: 74f220765e7f96e44a8886c5b3ac4101, type: 3}
+  - {fileID: 4623807308068332166, guid: 1f790267a5f864c498c605bfa8373204, type: 3}
+  - {fileID: 7078717111030430427, guid: de47e04eb6f8cd1499b2a150788838e1, type: 3}
+  - {fileID: 2214546994689765425, guid: f5efdf81e8565ba4abdc92d7692ef73b, type: 3}
+  - {fileID: 2172481388248952137, guid: e98f748144edad54784a7b35141ea71d, type: 3}
 --- !u!1 &1047396805
 GameObject:
   m_ObjectHideFlags: 0
