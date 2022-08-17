@@ -34,6 +34,19 @@ public class ScanningMasterScript : MonoBehaviour
         CurrentBoilerNumber = BoilerNumber;
     }
 
+    public void HideBoiler()
+    {
+        if (CurrentBoiler.GetComponent<Renderer>().enabled)
+        {
+            CurrentBoiler.GetComponent<Renderer>().enabled = false;
+        }
+        else
+        {
+            CurrentBoiler.GetComponent<Renderer>().enabled = true;
+        }
+        
+    }
+
     public void RemoveBoiler()
     {
         //Maybe this causes Problems because it destroys the CurrentBoiler GameObject, maybe we cannnot fill this again later

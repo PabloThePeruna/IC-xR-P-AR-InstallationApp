@@ -110,5 +110,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4679a0b45237a24b9d509ca393bbf2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Notice: {r: 1, g: 0, b: 0, a: 0.5019608}
+  Notice: {r: 1, g: 0, b: 0, a: 0.78431374}
   Standard: {r: 1, g: 1, b: 1, a: 0.5019608}
+  NonColliding: {r: 0, g: 0, b: 0, a: 0}
