@@ -32,6 +32,7 @@ MonoBehaviour:
     - Assembly-CSharp-firstpass
     - Assembly-CSharp
     - NativeGallery.Runtime
+    - RuntimeTransformHandle
     - NativeGallery.Editor
     showAdvancedSettings: 0
   addMgrToSceneAutomatically: 0
