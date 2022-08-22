@@ -12,6 +12,7 @@ public class SnapPosition : MonoBehaviour
     //private SphereCollider CheckArea = new SphereColider;
     private Vector2 [] BoundaryPointsInPlaneSpace;//This will store the Boundary Points, it's 2d because its place space
     private Vector3 [] BoundaryPointsInWorldSpace;
+    
     private List<Vector3> BoundaryTest;
     // Start is called before the first frame update
     void Start()
@@ -41,6 +42,15 @@ public class SnapPosition : MonoBehaviour
                     transform.position = BoundaryPointsInPlaneSpace[i];
                 }
             }
+        
+    }
+
+    private Vector3 BoundaryPointsToWorldSpace(Vector2 BoundaryPoint)
+    {
+        
+            GameObject temp = new GameObject();
+            temp.transform.position = BoundaryPoint;
+        return temp.transform.position;
         
     }
 }
