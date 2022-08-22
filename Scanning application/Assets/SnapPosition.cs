@@ -12,6 +12,7 @@ public class SnapPosition : MonoBehaviour
     //private SphereCollider CheckArea = new SphereColider;
     private Vector2 [] BoundaryPointsInPlaneSpace;//This will store the Boundary Points, it's 2d because its place space
     private Vector3 [] BoundaryPointsInWorldSpace;
+    private List<Vector3> BoundaryTest;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,11 +22,15 @@ public class SnapPosition : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+            
+        Debug.Log(MyARPlane.ToString());//this method generated a String describing the plane properties for debugging puposes, hopefully this will help find a solution 
         Vector3 PlaneNormal = MyARPlane.normal;//This can probably be placed in the recalculation of the vector2
         Vector3 PlaneOrigin = MyARPlane.transform.position;
-        Vector3 PlaneCenterWorldSpace = MyARPlane.center;
+        Vector3 PlaneCenterWorldSpace = MyARPlane.center;//Maybe this and tranform.position are the same?
         Vector2 PlaneCenterPlaneSpace = MyARPlane.centerInPlaneSpace;
         BoundaryPointsInPlaneSpace = MyARPlane.boundary.ToArray();
+        //bool gotPlaneBoundary =MyARPlane.TryGetBoundary(BoundaryTest);//Sadly,it seems this method was deprecated and so we have to be content with the vector2[]
+        
 
         //Somehow I need to tranform the BoundaryPoints from 2d plane space to 3d world space
         //This is really a problem, because I would need the rotational orientation of the plane space to the world space for the maths
