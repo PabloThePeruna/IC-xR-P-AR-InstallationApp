@@ -126,7 +126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   axes: 6
   space: 1
-  type: 1
+  type: 0
   snappingType: 1
   positionSnap: {x: 0, y: 0, z: 0}
   rotationSnap: 0
@@ -134,4 +134,4 @@ MonoBehaviour:
   autoScale: 0
   autoScaleFactor: 1
   handleCamera: {fileID: 0}
-  target: {fileID: 2476156514020275043}
+  target: {fileID: 0}

@@ -17,6 +17,7 @@ namespace RuntimeHandle
         public float rotationSnap = 0;
         public Vector3 scaleSnap = Vector3.zero;
 
+        [Tooltip("Never use Auto Scale, it makes the object size depended on the distance to the camera, so a very bad idea for our project")]
         public bool autoScale = false;
         public float autoScaleFactor = 1;
         public Camera handleCamera;
