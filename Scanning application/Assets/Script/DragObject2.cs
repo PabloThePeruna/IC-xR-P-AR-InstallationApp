@@ -40,21 +40,27 @@ public class DragObject2 : MonoBehaviour
                     if (hit.collider.tag == "Boiler")                                               //Make sure to spell the tag correctly. Ask me how I know. Ask how long it took to find out  script didn't work because of this.
                         //Debug.Log("hit.collider.tag == Boiler");
                         toDrag = hit.transform;                                                     //Get GameObject
-                        dist = hit.transform.position.z - Camera.main.transform.position.z;         //Distance between GameObject and Camera in z
-                        v3 = new Vector3(pos.x, pos.y, dist);                                       
-                        v3 = Camera.main.ScreenToWorldPoint(v3);                                    //Camera spawn point
-                        offset = toDrag.position - v3;                                              //Vector between GameObject and Camera
-                        dragging = true;                                                            //Start moving
-                    }
+                    dist = hit.transform.position.z - Camera.main.transform.position.z;         //Distance between GameObject and Camera in z
+                    dist = Mathf.Abs(dist);                                                     //2.////////////
+                    v3 = new Vector3(pos.x, pos.y, dist);
+                    v3 = Camera.main.ScreenToWorldPoint(v3);                                    //Camera spawn point
+                    offset = toDrag.position - v3;                                              //Vector between GameObject and Camera
+                    dragging = true;                                                            //Start moving
                 }
             }
 
+
             if (dragging && touch.phase == TouchPhase.Moved)
             {
-                //Somewhere here causes movement to be inverted when you the camera is facing opposite it's spawn facing direction 
+                //Somewhere here causes movement to be inverted when you the camera is facing opposite it's spawn facing direction
+                //1.Try if updating of dist helps, look for //1.//////////// in Code
+                //2.Try if absolute of dist helps, look for //2.//////////// in Code
 
-                v3 = new Vector3(Input.mousePosition.x, Input.mousePosition.y, dist);               
-                v3 = Camera.main.ScreenToWorldPoint(v3);                                            
+                
+                dist = toDrag.position.z- Camera.main.transform.position.z;                     //1.////////////
+                //v3 = new Vector3(Input.mousePosition.x, Input.mousePosition.y, dist);
+                v3 = new Vector3(pos.x, pos.y, dist);
+                v3 = Camera.main.ScreenToWorldPoint(v3);
                 toDrag.position = v3 + offset;                                                      //Move GameObject to new position
             }
 
@@ -63,6 +69,8 @@ public class DragObject2 : MonoBehaviour
                 dragging = false;
             }
         }
+
+
         if(Input.touchCount == 2){
             Touch touch = Input.touches[0];
             Vector3 pos = touch.position;
