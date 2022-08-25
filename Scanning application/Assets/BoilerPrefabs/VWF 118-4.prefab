@@ -12,11 +12,9 @@ GameObject:
   - component: {fileID: 8507505936904452052}
   - component: {fileID: -7042318959050361061}
   - component: {fileID: 8517013712752490522}
-  - component: {fileID: -2638448237364037053}
-  - component: {fileID: 5177187556591265432}
   m_Layer: 0
   m_Name: VWF 118-4
-  m_TagString: Untagged
+  m_TagString: Boiler
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,38 +98,3 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 6136599848619131787, guid: e911de9042e402f4699f6694e3eec5a3, type: 3}
---- !u!114 &-2638448237364037053
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4623807308068332166}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad20ffc97b595bb4b94ee5fd56a84a35, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &5177187556591265432
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4623807308068332166}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecfa17e94c9ff9c47b43ede109092ac1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  axes: 6
-  space: 1
-  type: 0
-  snappingType: 1
-  positionSnap: {x: 0, y: 0, z: 0}
-  rotationSnap: 0
-  scaleSnap: {x: 0, y: 0, z: 0}
-  autoScale: 0
-  autoScaleFactor: 1
-  handleCamera: {fileID: 0}
-  target: {fileID: 0}
