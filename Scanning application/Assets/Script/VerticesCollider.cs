@@ -3,6 +3,10 @@ using System.Collections;
 
 
 //This script needs to be attached to the mesh prefab used by the Mesh Manager
+
+// It would be nice if we could get some optimization here
+
+
 public class VerticesCollider : MonoBehaviour
 {
     [Tooltip("The colour that appears if there is collision")]
@@ -17,8 +21,9 @@ public class VerticesCollider : MonoBehaviour
     private static bool colliding = false;
     void Start()
     {
-        //We only Scan the Mesh every 0.1 seconds for collision, for Performance reasons
-        //This may not be strictly necessary but it definitely can't hurt
+        //Using the following function, we only Scan the Mesh every 0.1 seconds for collision, for Performance reasons
+        //This may not be strictly necessary but it definitely can't hurt. - As it turns out, this causes flickering of the mesh color, where the mesh turn to it's base color.
+        //It would be very good for performance if we could use this.
         //InvokeRepeating("ScanMeshForCollision", 0.5f, 0.1f);//While this may be a nice idea to improve performance, it causes the mesh to turn white and flashing. Unless this can be eliminted, use update()
     }
 
@@ -42,15 +47,15 @@ public class VerticesCollider : MonoBehaviour
             else if(colliding==true)
             {
                 //Debug.Log("No collision here");
-                colors[i] = NonColliding;
+                colors[i] = NonColliding;//This makes the mesh invisble where there is no collision, if there is collision elsewhere
             }
             else
             {
                 //Debug.Log("Miss");
-                colors[i] = Standard;
+                colors[i] = Standard;//This is if there is no collision anywhere
             }
 
-            mesh.colors = colors;
+            mesh.colors = colors;//is it maybe faster if we instantly write to mesh.colors instead of colors first?
         }
 
 
@@ -70,5 +75,6 @@ public class VerticesCollider : MonoBehaviour
             //{
             //isInVol = false;
             //tMesh = nVerts = vPos = undefined;
+            //}
         //return isInVol;
     //}
