@@ -37,24 +37,25 @@ public class DragObject2 : MonoBehaviour
                 if (Physics.Raycast(ray, out hit))
                 {
                     //Debug.Log("Raycast hit");
-                    if (hit.collider.tag == "Boiler")//I had a fcking space here, so " Boiler" and that broke everything...
-                    {
+                    if (hit.collider.tag == "Boiler")                                               //Make sure to spell the tag correctly. Ask me how I know. Ask how long it took to find out  script didn't work because of this.
                         //Debug.Log("hit.collider.tag == Boiler");
-                        toDrag = hit.transform;
-                        dist = hit.transform.position.z - Camera.main.transform.position.z;
-                        v3 = new Vector3(pos.x, pos.y, dist);
-                        v3 = Camera.main.ScreenToWorldPoint(v3);
-                        offset = toDrag.position - v3;
-                        dragging = true;
+                        toDrag = hit.transform;                                                     //Get GameObject
+                        dist = hit.transform.position.z - Camera.main.transform.position.z;         //Distance between GameObject and Camera in z
+                        v3 = new Vector3(pos.x, pos.y, dist);                                       
+                        v3 = Camera.main.ScreenToWorldPoint(v3);                                    //Camera spawn point
+                        offset = toDrag.position - v3;                                              //Vector between GameObject and Camera
+                        dragging = true;                                                            //Start moving
                     }
                 }
             }
 
             if (dragging && touch.phase == TouchPhase.Moved)
             {
-                v3 = new Vector3(Input.mousePosition.x, Input.mousePosition.y, dist);
-                v3 = Camera.main.ScreenToWorldPoint(v3);
-                toDrag.position = v3 + offset;
+                //Somewhere here causes movement to be inverted when you the camera is facing opposite it's spawn facing direction 
+
+                v3 = new Vector3(Input.mousePosition.x, Input.mousePosition.y, dist);               
+                v3 = Camera.main.ScreenToWorldPoint(v3);                                            
+                toDrag.position = v3 + offset;                                                      //Move GameObject to new position
             }
 
             if (dragging && (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled))
@@ -75,7 +76,7 @@ public class DragObject2 : MonoBehaviour
                 if (Physics.Raycast(ray, out hit))
                 {
                     //Debug.Log("Raycast hit");
-                    if (hit.collider.tag == "Boiler")//I had a fcking space here, so " Boiler" and that broke everything...
+                    if (hit.collider.tag == "Boiler")                                               //Make sure to spell the tag correctly.
                     {
                         //Debug.Log("hit.collider.tag == Boiler");
                         toRotate = hit.transform;
@@ -86,7 +87,7 @@ public class DragObject2 : MonoBehaviour
 
             if (rotating && touch.phase == TouchPhase.Moved)
             {
-                toRotate.Rotate(0f, -touch.deltaPosition.x/5, 0f);//tune turning sensitivity here
+                toRotate.Rotate(0f, -touch.deltaPosition.x/5, 0f);                                  //tune turning sensitivity here
             }
 
             if (rotating && (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled))

@@ -28,6 +28,7 @@ public class SnapPosition : MonoBehaviour
         Vector3 PlaneNormal = MyARPlane.normal;//This can probably be placed in the recalculation of the vector2
         Vector3 PlaneOrigin = MyARPlane.transform.position;
         Vector3 PlaneCenterWorldSpace = MyARPlane.center;//Maybe this and tranform.position are the same?
+        //Pose PlanePose = MyARPlane.pose;
         Vector2 PlaneCenterPlaneSpace = MyARPlane.centerInPlaneSpace;
         BoundaryPointsInPlaneSpace = MyARPlane.boundary.ToArray();
         //bool gotPlaneBoundary =MyARPlane.TryGetBoundary(BoundaryTest);//Sadly,it seems this method was deprecated and so we have to be content with the vector2[]
