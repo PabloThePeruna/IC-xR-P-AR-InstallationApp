@@ -57,7 +57,7 @@ public class DragObject2 : MonoBehaviour
                 //2.Try if absolute of dist helps, look for //2.//////////// in Code
 
                 
-                dist = toDrag.position.z- Camera.main.transform.position.z;                     //1.////////////
+                //dist = toDrag.position.z- Camera.main.transform.position.z;                     //1.//////////// I think this allows movement in 3 axis, but that is problematic to say the least
                 //v3 = new Vector3(Input.mousePosition.x, Input.mousePosition.y, dist);
                 v3 = new Vector3(pos.x, pos.y, dist);
                 v3 = Camera.main.ScreenToWorldPoint(v3);
