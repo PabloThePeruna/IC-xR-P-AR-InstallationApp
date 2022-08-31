@@ -35,6 +35,12 @@ public class VerticesCollider : MonoBehaviour
         //InvokeRepeating("ScanMeshForCollision", 0.5f, 0.1f);//While this may be a nice idea to improve performance, it causes the mesh to turn white and flashing. Unless this is fixed, use update()
     }
 
+    public void SwitchCollisionSystem()
+    {
+        if (InvokeRepeatingTest) { InvokeRepeatingTest = false;}
+        else { InvokeRepeatingTest = true; }
+    }
+
     void Update()
     {
         //The idea is, we choose between the inefficient Collision Test and the inefficient Collision Test that only happens every WaitNFrames as a coroutine
