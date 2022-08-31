@@ -52,7 +52,8 @@ public class VerticesCollider : MonoBehaviour
                 Mesh mesh = GetComponent<MeshFilter>().mesh;                //Get the mesh
                 for (int i = 0; i < ColorStorage.Length; i++)               //Since I am not sure that the number of vertices stayed the same, only use as many colors as we have
                 {
-                    mesh.colors[i] = ColorStorage[i];                       //This could cause major Problems if it turns out the Mesh Generation changes the 
+                    mesh.colors[i] = ColorStorage[i];                       //This could cause major Problems if it turns out the Mesh Generation changes the index of mesh vertices
+                                                                            //If it does, this probably won't work since the colouring cant be vertex position based
                 }
             }
         }
