@@ -13,9 +13,18 @@ public class DragObject2 : MonoBehaviour
     private float dist;
     private bool dragging = false;
     private bool rotating = false;
+    [Tooltip("This allows you to activate (true) or deactivate (false) 3d movement for the boiler. It is recommended you leave this off")]
+    public bool move3d = false;
     private Vector3 offset;
     private Transform toDrag;
     private Transform toRotate;
+
+
+    public void SwitchMovementType()
+    {
+        if (move3d) {move3d = false;}
+        else {move3d= true;}
+    }
 
     // Update is called once per frame
     void Update()
@@ -56,9 +65,12 @@ public class DragObject2 : MonoBehaviour
                 //1.Try if updating of dist helps, look for //1.//////////// in Code
                 //2.Try if absolute of dist helps, look for //2.//////////// in Code
 
-                
-                //dist = toDrag.position.z- Camera.main.transform.position.z;                     //1.//////////// I think this allows movement in 3 axis, but that is problematic to say the least
-                //v3 = new Vector3(Input.mousePosition.x, Input.mousePosition.y, dist);
+                if (move3d)
+                {
+                    dist = toDrag.position.z - Camera.main.transform.position.z;
+                }
+                                     //1.//////////// This allows movement in 3 axis, but that is problematic to say the least
+                //v3 = new Vector3(Input.mousePosition.x, Input.mousePosition.y, dist);           //Deprecated
                 v3 = new Vector3(pos.x, pos.y, dist);
                 v3 = Camera.main.ScreenToWorldPoint(v3);
                 toDrag.position = v3 + offset;                                                      //Move GameObject to new position
