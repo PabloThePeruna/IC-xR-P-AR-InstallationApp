@@ -19,6 +19,7 @@ public class DragObject2 : MonoBehaviour
     private Transform toDrag;
     private Transform toRotate;
 
+    private ButtonState buttonState;
 
     public void SwitchMovementType()
     {
@@ -76,6 +77,22 @@ public class DragObject2 : MonoBehaviour
                 v3 = new Vector3(pos.x, pos.y, dist);
                 v3 = Camera.main.ScreenToWorldPoint(v3);
                 toDrag.position = v3 + offset;                                                      //Move GameObject to new position
+                //Move MeasurementPoints, this doesn't work yet
+                
+                for(int i=0; i < buttonState.startPointsBoilerHit.Length; i++)
+                {
+                    if (buttonState.startPointsBoilerHit[i])
+                    {
+                        buttonState.startPoints[i].transform.position += v3;                      
+                        buttonState.LRStorage[i].SetPosition(0, buttonState.startPoints[i].transform.position);
+                    }
+                    if (buttonState.endPointsBoilerHit[i])
+                    {
+                        buttonState.endPoints[i].transform.position += v3;                        
+                        buttonState.LRStorage[i].SetPosition(1, buttonState.endPoints[i].transform.position);
+                    }
+                }
+                
             }
 
             if (dragging && (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled))

@@ -9,7 +9,10 @@ using UnityEngine.XR.ARFoundation;
 public class ButtonState: MonoBehaviour
 {
     public GameObject screenshotScreen;
-    private static int NumberOfButtons = 8;
+
+    [HideInInspector]
+    public static int NumberOfButtons = 8;
+
     public GameObject[] FunctionButtons = new GameObject[NumberOfButtons];
     //public Text[] FunctionButtonText=new Text[NumberOfButtons];
     public GameObject[] CloseButtons = new GameObject[NumberOfButtons];
@@ -22,12 +25,18 @@ public class ButtonState: MonoBehaviour
     [SerializeField]
     private ARCameraManager arCameraManager;
 
-    private LineRenderer[] measureLines=new LineRenderer[NumberOfButtons];
+    [HideInInspector]
+    public LineRenderer[] measureLines=new LineRenderer[NumberOfButtons];
 
     private ARRaycastManager arRaycastManager;
 
-    private GameObject[] startPoints = new GameObject[NumberOfButtons];
-    private GameObject[] endPoints = new GameObject[NumberOfButtons];
+    [HideInInspector]
+    public GameObject[] startPoints = new GameObject[NumberOfButtons];
+    public GameObject[] endPoints = new GameObject[NumberOfButtons];
+
+    [HideInInspector]
+    public bool[] startPointsBoilerHit = new bool[NumberOfButtons];
+    public bool[] endPointsBoilerHit = new bool[NumberOfButtons];
 
     private Vector2 touchPosition = default;
     private Vector2 touch2Position = default;
@@ -35,9 +44,11 @@ public class ButtonState: MonoBehaviour
     private static List<ARRaycastHit> hits = new List<ARRaycastHit>();
 
     private static int ActiveButton;
-    private LineRenderer[] LRStorage = new LineRenderer[NumberOfButtons];
 
+    [HideInInspector]
+    public LineRenderer[] LRStorage = new LineRenderer[NumberOfButtons];
 
+    
 
     void Start()
     {
