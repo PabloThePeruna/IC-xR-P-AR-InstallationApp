@@ -71,6 +71,11 @@ public class ButtonState: MonoBehaviour
         //Debug.Log("Set ActiveButton to -1");
     }
 
+    public void stopMeasuring()
+    {
+        ActiveButton = -1;
+    }
+
     public void functionButton1()
     {
         //Perform Function of Button 1
@@ -290,6 +295,7 @@ public class ButtonState: MonoBehaviour
 
     public void LimitedAreaTouchInputAndBoiler()
     {
+        
         if (Input.touchCount > 0)
         {
             //Debug.Log("TouchCount > 0");
@@ -379,7 +385,16 @@ public class ButtonState: MonoBehaviour
         }
     }
 
-
+    private void UpdateDistances()
+    {
+        for(int i = 0; i < NumberOfButtons; i++)
+        {
+            if (startPoints[i].active)
+            {
+                FunctionButtons[i].GetComponentInChildren<TMP_Text>().text = $"Distance {ActiveButton + 1}: {(Vector3.Distance(startPoints[i].transform.position, endPoints[i].transform.position) * measurementFactor).ToString("F2")} cm";
+            }
+        }
+    }
 
 
 
@@ -435,8 +450,16 @@ public class ButtonState: MonoBehaviour
             //LimitedAreaTouchInput();
 
             //This is the single finger option with limited touch area whoch can also measure the Boiler
-            LimitedAreaTouchInputAndBoiler();
-            
+            if (ActiveButton >= 0)                                      //This is so we can deactivate the measuring
+            {
+                LimitedAreaTouchInputAndBoiler();
+            }
+            else
+            {
+                UpdateDistances();                                      //This function will update the shown UI distances while we move the boiler
+            }
+
+
         }
 
 
