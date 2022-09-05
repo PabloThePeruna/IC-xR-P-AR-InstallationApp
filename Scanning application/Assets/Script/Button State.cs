@@ -288,6 +288,96 @@ public class ButtonState: MonoBehaviour
         }
     }
 
+    public void LimitedAreaTouchInputAndBoiler()
+    {
+        if (Input.touchCount > 0)
+        {
+            //Debug.Log("TouchCount > 0");
+            Touch touch = Input.GetTouch(0);
+
+            //Here we only allow the touch input through, if it is in the area of the screen we don't use for buttons
+            if (touch.position.y <= 100 || touch.position.x < 600 && touch.position.y < 600) { }
+            else
+            {
+                if (touch.phase == TouchPhase.Began)
+                {
+                    //Debug.Log("TouchPhase.Began");
+                    touchPosition = touch.position;
+
+                    //Raycast to Boiler Variables
+                    Ray ray = Camera.main.ScreenPointToRay(touchPosition);
+                    RaycastHit hit;
+
+                    //Raycast to Boiler needs to be first, because if you hit the boiler we dont care if there is a mesh behind it. 
+                    if (Physics.Raycast(ray, out hit))
+                    {
+                        if (hit.collider.tag == "Boiler")
+                        {
+                            //Debug.Log("Hit the Boiler");
+                            startPoints[ActiveButton].SetActive(true);
+                            ChangeToButtonColor(FunctionButtons[ActiveButton], startPoints[ActiveButton]);
+                            startPoints[ActiveButton].transform.position = hit.point;
+                        }
+
+                    }
+                    else if (arRaycastManager.Raycast(touchPosition, hits, UnityEngine.XR.ARSubsystems.TrackableType.PlaneWithinPolygon))
+                    {
+                        //Debug.Log("arRaycastManager hits");
+                        startPoints[ActiveButton].SetActive(true);
+                        ChangeToButtonColor(FunctionButtons[ActiveButton], startPoints[ActiveButton]);
+
+
+                        Pose hitPose = hits[0].pose;
+                        startPoints[ActiveButton].transform.SetPositionAndRotation(hitPose.position, hitPose.rotation);
+                    }
+
+                    
+                }
+
+                if (touch.phase == TouchPhase.Moved)
+                {
+                    touchPosition = touch.position;
+                    //Raycast to Boiler Variables
+                    Ray ray = Camera.main.ScreenPointToRay(touchPosition);
+                    RaycastHit hit;
+
+                    
+
+                    //Raycast to comes first, see up
+                    if (Physics.Raycast(ray, out hit))
+                    {
+                        if (hit.collider.tag == "Boiler")
+                        {
+                            //Debug.Log("Hit the Boiler 2");
+                            LRStorage[ActiveButton].gameObject.SetActive(true);
+                            endPoints[ActiveButton].SetActive(true);
+                            endPoints[ActiveButton].transform.position = hit.point;
+                            ChangeToButtonColor(FunctionButtons[ActiveButton], endPoints[ActiveButton]);
+                            ChangeLineRendererColor(FunctionButtons[ActiveButton], LRStorage[ActiveButton]);
+                            LRStorage[ActiveButton].SetPosition(0, startPoints[ActiveButton].transform.position);
+                            LRStorage[ActiveButton].SetPosition(1, endPoints[ActiveButton].transform.position);
+                            FunctionButtons[ActiveButton].GetComponentInChildren<TMP_Text>().text = $"Distance {ActiveButton + 1}: {(Vector3.Distance(startPoints[ActiveButton].transform.position, endPoints[ActiveButton].transform.position) * measurementFactor).ToString("F2")} cm";
+                            
+                        }
+
+                    }
+                    else if (arRaycastManager.Raycast(touchPosition, hits, UnityEngine.XR.ARSubsystems.TrackableType.PlaneWithinPolygon))
+                    {
+                        //measureLines[ActiveButton].gameObject.SetActive(true);
+                        LRStorage[ActiveButton].gameObject.SetActive(true);
+                        endPoints[ActiveButton].SetActive(true);
+                        Pose hitPose = hits[0].pose;
+                        endPoints[ActiveButton].transform.SetPositionAndRotation(hitPose.position, hitPose.rotation);
+                        ChangeToButtonColor(FunctionButtons[ActiveButton], endPoints[ActiveButton]);
+                        ChangeLineRendererColor(FunctionButtons[ActiveButton], LRStorage[ActiveButton]);
+                        LRStorage[ActiveButton].SetPosition(0, startPoints[ActiveButton].transform.position);
+                        LRStorage[ActiveButton].SetPosition(1, endPoints[ActiveButton].transform.position);
+                        FunctionButtons[ActiveButton].GetComponentInChildren<TMP_Text>().text = $"Distance {ActiveButton + 1}: {(Vector3.Distance(startPoints[ActiveButton].transform.position, endPoints[ActiveButton].transform.position) * measurementFactor).ToString("F2")} cm";
+                    }
+                }
+            }
+        }
+    }
 
 
 
@@ -330,17 +420,10 @@ public class ButtonState: MonoBehaviour
     void Update()
     {
         //Debug.Log("ActiveButton = "+ActiveButton);
-        //Somehow we are stuck here
         if(ActiveButton >= 0)
         {
             //Debug.Log("A Button is active");
 
-            //At this point it will be necessary to change the colors of startPoints[ActiveButton], endPoints[ActiveButton], measureLines[ActiveButton]
-            //to the colors of the selected FunctionButtons[ActiveButton]
-
-            //Drag and Drop?
-
-            //Highlight the selected FunctionButtons[ActiveButton]
 
             //This is the function to move the measurement points with two fingers at once, which causes problems if what you want to measure can't be seen on screen as a whole
             //TwoHandedTouchInput();
@@ -349,81 +432,11 @@ public class ButtonState: MonoBehaviour
             //SingleHandedTouchInput();
 
             //This is the single finger option with limited touch area
-            LimitedAreaTouchInput();
-            /*
-            if (startPoints[0].activeSelf && endPoints[0].activeSelf)
-            {
-                //if (!measureLines[0].activeSelf) { measureLines[0].SetActive(true); }
-                measureLines[0].SetPosition(0, startPoints[0].transform.position);
-                measureLines[0].SetPosition(1, endPoints[0].transform.position);
-                ChangeLineRendererColor(FunctionButtons[0], measureLines[0]);
-                FunctionButtons[0].GetComponentInChildren<TMP_Text>().text = $"Distance 1: {(Vector3.Distance(startPoints[0].transform.position, endPoints[0].transform.position) * measurementFactor).ToString("F2")} cm";
-            }
-            if (startPoints[1].activeSelf && endPoints[1].activeSelf)
-            {
-                //if (!measureLines[1].activeSelf) { measureLines[1].SetActive(true); }
-                measureLines[1].SetPosition(0, startPoints[1].transform.position);
-                measureLines[1].SetPosition(1, endPoints[1].transform.position);
-                ChangeLineRendererColor(FunctionButtons[1], measureLines[1]);
-                FunctionButtons[1].GetComponentInChildren<TMP_Text>().text = $"Distance 2: {(Vector3.Distance(startPoints[1].transform.position, endPoints[1].transform.position) * measurementFactor).ToString("F2")} cm";
-            }
-            if (startPoints[2].activeSelf && endPoints[2].activeSelf)
-            {
-                //if (!measureLines[2].activeSelf) { measureLines[2].SetActive(true); }
-                measureLines[2].SetPosition(0, startPoints[2].transform.position);
-                measureLines[2].SetPosition(1, endPoints[2].transform.position);
-                ChangeLineRendererColor(FunctionButtons[2], measureLines[2]);
-                FunctionButtons[2].GetComponentInChildren<TMP_Text>().text = $"Distance 3: {(Vector3.Distance(startPoints[2].transform.position, endPoints[2].transform.position) * measurementFactor).ToString("F2")} cm";
-            }
-            if (startPoints[3].activeSelf && endPoints[3].activeSelf)
-            {
-                //if (!measureLines[3].activeSelf) { measureLines[3].SetActive(true); }
-                measureLines[3].SetPosition(0, startPoints[3].transform.position);
-                measureLines[3].SetPosition(1, endPoints[3].transform.position);
-                ChangeLineRendererColor(FunctionButtons[3], measureLines[3]);
-                FunctionButtons[3].GetComponentInChildren<TMP_Text>().text = $"Distance 4: {(Vector3.Distance(startPoints[3].transform.position, endPoints[3].transform.position) * measurementFactor).ToString("F2")} cm";
-            }
-            if (startPoints[4].activeSelf && endPoints[4].activeSelf)
-            {
-                //if (!measureLines[4].activeSelf) { measureLines[4].SetActive(true); }
-                measureLines[4].SetPosition(0, startPoints[4].transform.position);
-                measureLines[4].SetPosition(1, endPoints[4].transform.position);
-                ChangeLineRendererColor(FunctionButtons[4], measureLines[4]);
-                FunctionButtons[4].GetComponentInChildren<TMP_Text>().text = $"Distance 5: {(Vector3.Distance(startPoints[4].transform.position, endPoints[4].transform.position) * measurementFactor).ToString("F2")} cm";
-            }
-            if (startPoints[5].activeSelf && endPoints[5].activeSelf)
-            {
-                //if (!measureLines[5].activeSelf) { measureLines[5].SetActive(true); }
-                measureLines[5].SetPosition(0, startPoints[5].transform.position);
-                measureLines[5].SetPosition(1, endPoints[5].transform.position);
-                ChangeLineRendererColor(FunctionButtons[5], measureLines[5]);
-                FunctionButtons[5].GetComponentInChildren<TMP_Text>().text = $"Distance 6: {(Vector3.Distance(startPoints[5].transform.position, endPoints[5].transform.position) * measurementFactor).ToString("F2")} cm";
-            }
-            if (startPoints[6].activeSelf && endPoints[6].activeSelf)
-            {
-                //if (!measureLines[6].activeSelf) { measureLines[6].SetActive(true); }
-                measureLines[6].SetPosition(0, startPoints[6].transform.position);
-                measureLines[6].SetPosition(1, endPoints[6].transform.position);
-                ChangeLineRendererColor(FunctionButtons[6], measureLines[6]);
-                FunctionButtons[6].GetComponentInChildren<TMP_Text>().text = $"Distance 7: {(Vector3.Distance(startPoints[6].transform.position, endPoints[6].transform.position) * measurementFactor).ToString("F2")} cm";
-            }
-            if (startPoints[7].activeSelf && endPoints[7].activeSelf)
-            {
-                //if (!measureLines[7].activeSelf) { measureLines[7].SetActive(true); }
-                measureLines[7].SetPosition(0, startPoints[7].transform.position);
-                measureLines[7].SetPosition(1, endPoints[7].transform.position);
-                ChangeLineRendererColor(FunctionButtons[7], measureLines[7]);
-                FunctionButtons[7].GetComponentInChildren<TMP_Text>().text = $"Distance 8: {(Vector3.Distance(startPoints[7].transform.position, endPoints[7].transform.position) * measurementFactor).ToString("F2")} cm";
-            }
-            */
-            /*if (startPoints[0].activeSelf && endPoints[0].activeSelf)
-            {
-                measureLines[0].SetPosition(0, startPoints[0].transform.position);
-                measureLines[0].SetPosition(1, endPoints[0].transform.position);
-                //The following line of Code should work
-                FunctionButtons[0].GetComponentInChildren<TMP_Text>().text = $"Distance: {(Vector3.Distance(startPoints[0].transform.position, endPoints[0].transform.position) * measurementFactor).ToString("F2")} cm";
+            //LimitedAreaTouchInput();
 
-            }*/
+            //This is the single finger option with limited touch area whoch can also measure the Boiler
+            LimitedAreaTouchInputAndBoiler();
+            
         }
 
 

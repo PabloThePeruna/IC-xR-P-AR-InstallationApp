@@ -46,9 +46,11 @@ public class DragObject2 : MonoBehaviour
                 if (Physics.Raycast(ray, out hit))
                 {
                     //Debug.Log("Raycast hit");
-                    if (hit.collider.tag == "Boiler")                                               //Make sure to spell the tag correctly. Ask me how I know. Ask how long it took to find out  script didn't work because of this.
+                    if (hit.collider.tag == "Boiler")
+                    {                                               //Make sure to spell the tag correctly. Ask me how I know. Ask how long it took to find out  script didn't work because of this.
                         //Debug.Log("hit.collider.tag == Boiler");
-                        toDrag = hit.transform;                                                     //Get GameObject
+                        toDrag = hit.transform;
+                    }                                                //Get GameObject
                     dist = hit.transform.position.z - Camera.main.transform.position.z;         //Distance between GameObject and Camera in z
                     dist = Mathf.Abs(dist);                                                     //2.////////////
                     v3 = new Vector3(pos.x, pos.y, dist);
