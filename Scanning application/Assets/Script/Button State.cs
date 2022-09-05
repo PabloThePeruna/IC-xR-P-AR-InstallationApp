@@ -334,6 +334,7 @@ public class ButtonState: MonoBehaviour
                             startPoints[ActiveButton].SetActive(true);
                             ChangeToButtonColor(FunctionButtons[ActiveButton], startPoints[ActiveButton]);
                             startPoints[ActiveButton].transform.position = hit.point;
+                            startPointsBoilerHit[ActiveButton] = true;
                         }
 
                     }
@@ -342,10 +343,9 @@ public class ButtonState: MonoBehaviour
                         //Debug.Log("arRaycastManager hits");
                         startPoints[ActiveButton].SetActive(true);
                         ChangeToButtonColor(FunctionButtons[ActiveButton], startPoints[ActiveButton]);
-
-
                         Pose hitPose = hits[0].pose;
                         startPoints[ActiveButton].transform.SetPositionAndRotation(hitPose.position, hitPose.rotation);
+                        startPointsBoilerHit[ActiveButton] = false;
                     }
 
                     
@@ -374,7 +374,7 @@ public class ButtonState: MonoBehaviour
                             LRStorage[ActiveButton].SetPosition(0, startPoints[ActiveButton].transform.position);
                             LRStorage[ActiveButton].SetPosition(1, endPoints[ActiveButton].transform.position);
                             FunctionButtons[ActiveButton].GetComponentInChildren<TMP_Text>().text = $"Distance {ActiveButton + 1}: {(Vector3.Distance(startPoints[ActiveButton].transform.position, endPoints[ActiveButton].transform.position) * measurementFactor).ToString("F2")} cm";
-                            
+                            endPointsBoilerHit[ActiveButton] = true;
                         }
 
                     }
@@ -390,6 +390,7 @@ public class ButtonState: MonoBehaviour
                         LRStorage[ActiveButton].SetPosition(0, startPoints[ActiveButton].transform.position);
                         LRStorage[ActiveButton].SetPosition(1, endPoints[ActiveButton].transform.position);
                         FunctionButtons[ActiveButton].GetComponentInChildren<TMP_Text>().text = $"Distance {ActiveButton + 1}: {(Vector3.Distance(startPoints[ActiveButton].transform.position, endPoints[ActiveButton].transform.position) * measurementFactor).ToString("F2")} cm";
+                        endPointsBoilerHit[ActiveButton] = false;
                     }
                 }
             }
