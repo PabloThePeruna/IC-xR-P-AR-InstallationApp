@@ -19,7 +19,7 @@ public class DragObject2 : MonoBehaviour
     private Transform toDrag;
     private Transform toRotate;
 
-    private ButtonState buttonState;
+    public ButtonState buttonState;
 
     public void SwitchMovementType()
     {
