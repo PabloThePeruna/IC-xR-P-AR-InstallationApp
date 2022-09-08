@@ -30,14 +30,14 @@ public class DragObject2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
         Vector3 v3;
-
+        //Translation
         if (Input.touchCount == 1)
         {
             Touch touch = Input.touches[0];
             Vector3 pos = touch.position;
-
+            
             if (touch.phase == TouchPhase.Began)
             {
                 //Debug.Log("TouchPhase.Began");
@@ -70,25 +70,28 @@ public class DragObject2 : MonoBehaviour
 
                 if (move3d)
                 {
-                    dist = toDrag.position.z - Camera.main.transform.position.z;
+                    dist = toDrag.position.z - Camera.main.transform.position.z;                     //1.//////////// This allows movement in 3 axis, but that is problematic to say the least
                 }
-                                     //1.//////////// This allows movement in 3 axis, but that is problematic to say the least
+                                    
                 //v3 = new Vector3(Input.mousePosition.x, Input.mousePosition.y, dist);             //Deprecated
                 v3 = new Vector3(pos.x, pos.y, dist);
                 v3 = Camera.main.ScreenToWorldPoint(v3);
                 toDrag.position = v3 + offset;                                                      //Move GameObject to new position
-
+                //We know this works so far, no point using Debug messages I think
 
                 //Move MeasurementPoints, this doesn't work yet
-                for(int i=0; i < buttonState.startPointsBoilerHit.Length; i++)
+                for(int i=0; i <8; i++)                                                             //Instead of 8, put buttonState.startPointsBoilerHit.Length if possible
                 {
+                    Debug.Log("If loop called");
                     if (buttonState.startPointsBoilerHit[i])
                     {
+                        Debug.Log("Boiler Start Point Hit");
                         buttonState.startPoints[i].transform.position += v3;                      
                         buttonState.LRStorage[i].SetPosition(0, buttonState.startPoints[i].transform.position);
                     }
                     if (buttonState.endPointsBoilerHit[i])
                     {
+                        Debug.Log("Boiler End Point Hit");
                         buttonState.endPoints[i].transform.position += v3;                        
                         buttonState.LRStorage[i].SetPosition(1, buttonState.endPoints[i].transform.position);
                     }
@@ -102,7 +105,7 @@ public class DragObject2 : MonoBehaviour
             }
         }
 
-
+        //Rotation
         if(Input.touchCount == 2){
             Touch touch = Input.touches[0];
             Vector3 pos = touch.position;

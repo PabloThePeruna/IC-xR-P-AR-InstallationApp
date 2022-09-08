@@ -403,7 +403,7 @@ public class ButtonState: MonoBehaviour
         {
             if (startPoints[i].active)
             {
-                FunctionButtons[i].GetComponentInChildren<TMP_Text>().text = $"Distance {ActiveButton + 1}: {(Vector3.Distance(startPoints[i].transform.position, endPoints[i].transform.position) * measurementFactor).ToString("F2")} cm";
+                FunctionButtons[i].GetComponentInChildren<TMP_Text>().text = $"Distance {i + 1}: {(Vector3.Distance(startPoints[i].transform.position, endPoints[i].transform.position) * measurementFactor).ToString("F2")} cm";
             }
         }
     }
