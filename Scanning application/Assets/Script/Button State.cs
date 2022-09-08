@@ -401,7 +401,7 @@ public class ButtonState: MonoBehaviour
     {
         for(int i = 0; i < NumberOfButtons; i++)
         {
-            if (startPoints[i].active)
+            if (startPoints[i].activeSelf)                                                                                                                                                      //GameObject.active is obsolete, hope this works the same
             {
                 FunctionButtons[i].GetComponentInChildren<TMP_Text>().text = $"Distance {i + 1}: {(Vector3.Distance(startPoints[i].transform.position, endPoints[i].transform.position) * measurementFactor).ToString("F2")} cm";
             }
