@@ -43,7 +43,7 @@ public class DragObject2 : MonoBehaviour
                 //Debug.Log("TouchPhase.Began");
                 Ray ray = Camera.main.ScreenPointToRay(pos);
                 RaycastHit hit;
-                Debug.Log("0");
+
                 if (Physics.Raycast(ray, out hit))
                 {
                     //Debug.Log("Raycast hit");
@@ -52,7 +52,6 @@ public class DragObject2 : MonoBehaviour
                         //Debug.Log("hit.collider.tag == Boiler");
                         toDrag = hit.transform;
                     }                                                //Get GameObject
-                    Debug.Log("1");
                     dist = hit.transform.position.z - Camera.main.transform.position.z;         //Distance between GameObject and Camera in z
                     dist = Mathf.Abs(dist);                                                     //2.////////////
                     v3 = new Vector3(pos.x, pos.y, dist);
@@ -61,7 +60,7 @@ public class DragObject2 : MonoBehaviour
                     dragging = true;                                                            //Start moving
                 }
             }
-            Debug.Log("2");
+
 
             if (dragging && touch.phase == TouchPhase.Moved)
             {
@@ -73,7 +72,7 @@ public class DragObject2 : MonoBehaviour
                 {
                     dist = toDrag.position.z - Camera.main.transform.position.z;                     //1.//////////// This allows movement in 3 axis, but that is problematic to say the least
                 }
-                Debug.Log("3");
+                                    
                 //v3 = new Vector3(Input.mousePosition.x, Input.mousePosition.y, dist);             //Deprecated
                 v3 = new Vector3(pos.x, pos.y, dist);
                 v3 = Camera.main.ScreenToWorldPoint(v3);
@@ -84,8 +83,6 @@ public class DragObject2 : MonoBehaviour
                 for(int i=0; i <8; i++)                                                             //Instead of 8, put buttonState.startPointsBoilerHit.Length if possible
                 {
                     Debug.Log("If loop called");
-                    Debug.Log("Start"+buttonState.startPointsBoilerHit[7]);
-                    Debug.Log("End"+buttonState.endPointsBoilerHit[7]);
                     if (buttonState.startPointsBoilerHit[i])
                     {
                         Debug.Log("Boiler Start Point Hit");
