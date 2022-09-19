@@ -10740,6 +10740,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   move3d: 0
+  buttonState: {fileID: 1745584539}
 --- !u!114 &1725280107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11507,6 +11508,44 @@ MonoBehaviour:
   LineRendererPrefab: {fileID: 4990739064171819206, guid: d55e7005d130a8b49b7478a4c07647bf, type: 3}
   measurementFactor: 100
   arCameraManager: {fileID: 0}
+  measureLines:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  startPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  endPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  startPointsBoilerHit: 0000000000000000
+  endPointsBoilerHit: 0000000000000000
+  LRStorage:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &1752769721
 GameObject:
   m_ObjectHideFlags: 0
