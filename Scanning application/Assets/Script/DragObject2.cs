@@ -73,13 +73,13 @@ public class DragObject2 : MonoBehaviour
                     dist = toDrag.position.z - Camera.main.transform.position.z;                     //1.//////////// This allows movement in 3 axis, but that is problematic to say the least
                 }
                                     
-                //v3 = new Vector3(Input.mousePosition.x, Input.mousePosition.y, dist);             //Deprecated
+                //v3 = new Vector3(Input.mousePosition.x, Input.mousePosition.y, dist);             //Deprecated by Unity
                 v3 = new Vector3(pos.x, pos.y, dist);
                 v3 = Camera.main.ScreenToWorldPoint(v3);
                 toDrag.position = v3 + offset;                                                      //Move GameObject to new position
                 //We know this works so far, no point using Debug messages I think
 
-                /*                                                                                  //Unnecessary
+                /*                                                                                  //Deprecated, because we now set the Points to be children of the rigidbody boiler
                 //Move MeasurementPoints, this doesn't work yet
                 for(int i=0; i <8; i++)                                                             //Instead of 8, put buttonState.startPointsBoilerHit.Length if possible
                 {
