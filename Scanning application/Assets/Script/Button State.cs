@@ -334,7 +334,8 @@ public class ButtonState: MonoBehaviour
                             startPoints[ActiveButton].SetActive(true);
                             ChangeToButtonColor(FunctionButtons[ActiveButton], startPoints[ActiveButton]);
                             startPoints[ActiveButton].transform.position = hit.point;
-                            startPointsBoilerHit[ActiveButton] = true;
+                            //startPointsBoilerHit[ActiveButton] = true;
+                            startPoints[ActiveButton].transform.parent = hit.transform.gameObject.transform;
                         }
 
                     }
@@ -345,7 +346,8 @@ public class ButtonState: MonoBehaviour
                         ChangeToButtonColor(FunctionButtons[ActiveButton], startPoints[ActiveButton]);
                         Pose hitPose = hits[0].pose;
                         startPoints[ActiveButton].transform.SetPositionAndRotation(hitPose.position, hitPose.rotation);
-                        startPointsBoilerHit[ActiveButton] = false;
+                        //startPointsBoilerHit[ActiveButton] = false;
+                        startPoints[ActiveButton].transform.parent = null;
                     }
 
                     
@@ -374,7 +376,8 @@ public class ButtonState: MonoBehaviour
                             LRStorage[ActiveButton].SetPosition(0, startPoints[ActiveButton].transform.position);
                             LRStorage[ActiveButton].SetPosition(1, endPoints[ActiveButton].transform.position);
                             FunctionButtons[ActiveButton].GetComponentInChildren<TMP_Text>().text = $"Distance {ActiveButton + 1}: {(Vector3.Distance(startPoints[ActiveButton].transform.position, endPoints[ActiveButton].transform.position) * measurementFactor).ToString("F2")} cm";
-                            endPointsBoilerHit[ActiveButton] = true;
+                            //endPointsBoilerHit[ActiveButton] = true;
+                            endPoints[ActiveButton].transform.parent = hit.transform.gameObject.transform;
                         }
 
                     }
@@ -390,22 +393,29 @@ public class ButtonState: MonoBehaviour
                         LRStorage[ActiveButton].SetPosition(0, startPoints[ActiveButton].transform.position);
                         LRStorage[ActiveButton].SetPosition(1, endPoints[ActiveButton].transform.position);
                         FunctionButtons[ActiveButton].GetComponentInChildren<TMP_Text>().text = $"Distance {ActiveButton + 1}: {(Vector3.Distance(startPoints[ActiveButton].transform.position, endPoints[ActiveButton].transform.position) * measurementFactor).ToString("F2")} cm";
-                        endPointsBoilerHit[ActiveButton] = false;
+                        //endPointsBoilerHit[ActiveButton] = false;
+                        endPoints[ActiveButton].transform.parent = null;
                     }
                 }
             }
         }
     }
 
-    private void UpdateDistances()
+    public void UpdateDistances()
     {
         for(int i = 0; i < NumberOfButtons; i++)
         {
-            if (startPoints[i].activeSelf)                                                                                                                                                      //GameObject.active is obsolete, hope this works the same
+            if (startPoints[i].activeSelf)
             {
                 FunctionButtons[i].GetComponentInChildren<TMP_Text>().text = $"Distance {i + 1}: {(Vector3.Distance(startPoints[i].transform.position, endPoints[i].transform.position) * measurementFactor).ToString("F2")} cm";
+                LRStorage[i].SetPosition(0, startPoints[i].transform.position);
+                LRStorage[i].SetPosition(1, endPoints[i].transform.position);
             }
         }
+            
+                
+            
+        
     }
 
 
@@ -462,6 +472,7 @@ public class ButtonState: MonoBehaviour
             //LimitedAreaTouchInput();
 
             //This is the single finger option with limited touch area whoch can also measure the Boiler
+            
             if (ActiveButton >= 0)                                      //This is so we can deactivate the measuring
             {
                 LimitedAreaTouchInputAndBoiler();
@@ -470,8 +481,13 @@ public class ButtonState: MonoBehaviour
             {
                 UpdateDistances();                                      //This function will update the shown UI distances while we move the boiler
             }
-
-
+            
+            /*
+            if (ActiveButton >= 0)                                      //This is so we can deactivate the measuring
+            {
+                LimitedAreaTouchInputAndBoiler();
+            }
+            */
         }
 
 

@@ -11,7 +11,7 @@ public class ScanningMasterScript : MonoBehaviour
     public GameObject screenshotScreen;
     [Tooltip("Warning: Put the Boilers in this list in the correct order, in accordance to the order of the library canvas")]
     public GameObject[] BoilerList = new GameObject[NumberOfBoilers];
-
+    public Camera ARCamera;
     private GameObject CurrentBoiler;
     private static int CurrentBoilerNumber;
     // Start is called before the first frame update
@@ -30,7 +30,7 @@ public class ScanningMasterScript : MonoBehaviour
     {
         
         //Instead of Vector3.zero, we should probably spawn the Boiler at the center of the FOV
-        CurrentBoiler = Instantiate(BoilerList[BoilerNumber], Vector3.zero, Quaternion.identity);
+        CurrentBoiler = Instantiate(BoilerList[BoilerNumber], ARCamera.transform.position, Quaternion.identity);
         CurrentBoilerNumber = BoilerNumber;
     }
 

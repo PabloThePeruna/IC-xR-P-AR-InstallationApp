@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8507505936904452052}
   - component: {fileID: -7042318959050361061}
   - component: {fileID: 8517013712752490522}
+  - component: {fileID: 5077757192447765830}
   m_Layer: 0
   m_Name: VWF 118-4
   m_TagString: Boiler
@@ -98,3 +99,19 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 6136599848619131787, guid: e911de9042e402f4699f6694e3eec5a3, type: 3}
+--- !u!54 &5077757192447765830
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4623807308068332166}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

@@ -79,6 +79,7 @@ public class DragObject2 : MonoBehaviour
                 toDrag.position = v3 + offset;                                                      //Move GameObject to new position
                 //We know this works so far, no point using Debug messages I think
 
+                /*                                                                                  //Unnecessary
                 //Move MeasurementPoints, this doesn't work yet
                 for(int i=0; i <8; i++)                                                             //Instead of 8, put buttonState.startPointsBoilerHit.Length if possible
                 {
@@ -86,16 +87,19 @@ public class DragObject2 : MonoBehaviour
                     if (buttonState.startPointsBoilerHit[i])
                     {
                         Debug.Log("Boiler Start Point Hit");
-                        buttonState.startPoints[i].transform.position += v3;                      
-                        buttonState.LRStorage[i].SetPosition(0, buttonState.startPoints[i].transform.position);
+                        buttonState.startPoints[i].transform.position = buttonState.startPoints[i].transform.position + offset;
+                        buttonState.UpdateDistances(i);
+                        //buttonState.LRStorage[i].SetPosition(0, buttonState.startPoints[i].transform.position);
                     }
                     if (buttonState.endPointsBoilerHit[i])
                     {
                         Debug.Log("Boiler End Point Hit");
-                        buttonState.endPoints[i].transform.position += v3;                        
-                        buttonState.LRStorage[i].SetPosition(1, buttonState.endPoints[i].transform.position);
+                        buttonState.endPoints[i].transform.position = buttonState.endPoints[i].transform.position + offset;
+                        buttonState.UpdateDistances(i);
+                        //buttonState.LRStorage[i].SetPosition(1, buttonState.endPoints[i].transform.position);
                     }
                 }
+                */
                 
             }
 

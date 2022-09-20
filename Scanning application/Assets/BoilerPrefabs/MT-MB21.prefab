@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: -1332472956645405462}
   - component: {fileID: 7584868687649505842}
   - component: {fileID: 4848358564723811598}
+  - component: {fileID: -864587092770800369}
   m_Layer: 0
   m_Name: MT-MB21
   m_TagString: Boiler
@@ -98,3 +99,19 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 1729159948573779060, guid: 707651742fa853246b09a0e1a93078d4, type: 3}
+--- !u!54 &-864587092770800369
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7794937211493263697}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
