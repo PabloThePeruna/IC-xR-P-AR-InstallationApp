@@ -166,7 +166,7 @@ public class ButtonState: MonoBehaviour
         Vector4 myButtonColor = GetColorHere.GetComponent<Image>().color;
         /*Get the material component from your game object 
         and set its color to the new color defined above*/
-        Debug.Log("Color of the Button: "+myButtonColor);
+        //Debug.Log("Color of the Button: "+myButtonColor);
         PutColorHere.GetComponent<Renderer>().material.SetColor("_Color", myButtonColor);
 
     }
@@ -403,18 +403,19 @@ public class ButtonState: MonoBehaviour
 
     public void UpdateDistances()
     {
-        for(int i = 0; i < NumberOfButtons; i++)
+
+        
+        for (int i = 0; i < NumberOfButtons; i++)
         {
+            
             if (startPoints[i].activeSelf)
             {
+                Debug.Log("It just works");
                 FunctionButtons[i].GetComponentInChildren<TMP_Text>().text = $"Distance {i + 1}: {(Vector3.Distance(startPoints[i].transform.position, endPoints[i].transform.position) * measurementFactor).ToString("F2")} cm";
                 LRStorage[i].SetPosition(0, startPoints[i].transform.position);
                 LRStorage[i].SetPosition(1, endPoints[i].transform.position);
-            }
+            } 
         }
-            
-                
-            
         
     }
 
@@ -457,8 +458,7 @@ public class ButtonState: MonoBehaviour
     void Update()
     {
         //Debug.Log("ActiveButton = "+ActiveButton);
-        if(ActiveButton >= 0)
-        {
+        
             //Debug.Log("A Button is active");
 
 
@@ -488,7 +488,7 @@ public class ButtonState: MonoBehaviour
                 LimitedAreaTouchInputAndBoiler();
             }
             */
-        }
+        
 
 
     }
