@@ -10740,7 +10740,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   move3d: 0
-  buttonState: {fileID: 1745584539}
 --- !u!114 &1725280107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11485,7 +11484,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0050c23cb69bd7348a1dd0e11ed823df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  screenshotScreen: {fileID: 0}
   FunctionButtons:
   - {fileID: 852858146}
   - {fileID: 2085411543}
@@ -11495,58 +11493,8 @@ MonoBehaviour:
   - {fileID: 1427107029}
   - {fileID: 1135973277}
   - {fileID: 878753284}
-  CloseButtons:
-  - {fileID: 852858148}
-  - {fileID: 2085411544}
-  - {fileID: 1452268966}
-  - {fileID: 961132637}
-  - {fileID: 145281006}
-  - {fileID: 1427107030}
-  - {fileID: 1135973278}
-  - {fileID: 878753285}
-  ScreenshotTakenButton: {fileID: 0}
   measurementPointPrefab: {fileID: 2071381972608095454, guid: 8fb2ea08c01e0448c80b27ee8886a801, type: 3}
   LineRendererPrefab: {fileID: 4990739064171819206, guid: d55e7005d130a8b49b7478a4c07647bf, type: 3}
-  measurementFactor: 100
-  arCameraManager: {fileID: 0}
-  measureLines:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  startPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  endPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  startPointsBoilerHit: 0000000000000000
-  endPointsBoilerHit: 0000000000000000
-  LRStorage:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!1 &1752769721
 GameObject:
   m_ObjectHideFlags: 0

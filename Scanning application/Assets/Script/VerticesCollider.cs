@@ -3,8 +3,8 @@ using System.Collections;
 
 
 //This script needs to be attached to the mesh prefab used by the Mesh Manager
-
-// It would be nice if we could get some optimization here
+//the mesh needs to use a vertex-based shader because we are using vertex-based coloring
+//It would be nice if this were more efficient
 
 
 public class VerticesCollider : MonoBehaviour
@@ -31,10 +31,11 @@ public class VerticesCollider : MonoBehaviour
     {
         //Using the following function, we only Scan the Mesh every 0.1 seconds for collision, for Performance reasons
         //This may not be strictly necessary but it definitely can't hurt. - As it turns out, this causes flickering of the mesh color, where the mesh turn to it's base color.
-        //It would be very good for performance if we could use this.
-        //InvokeRepeating("ScanMeshForCollision", 0.5f, 0.1f);//While this may be a nice idea to improve performance, it causes the mesh to turn white and flashing. Unless this is fixed, use update()
+        //While this may be a nice idea to improve performance, it causes the mesh to turn white and flashing. Unless this is fixed, use update()
+        //InvokeRepeating("ScanMeshForCollision", 0.5f, 0.1f);
     }
 
+    //allows the user to change to the experimental collision system and back
     public void SwitchCollisionSystem()
     {
         if (InvokeRepeatingTest) { InvokeRepeatingTest = false;}
@@ -44,7 +45,7 @@ public class VerticesCollider : MonoBehaviour
     void Update()
     {
         //The idea is, we choose between the inefficient Collision Test and the inefficient Collision Test that only happens every WaitNFrames as a coroutine
-        //Should therefore hopefully keep things fluid
+        //Experimental
         if (InvokeRepeatingTest)
         {          
             if (NumberOfWaitFrames == WaitNFrames)                          //If we are in a TestFrame
@@ -63,25 +64,26 @@ public class VerticesCollider : MonoBehaviour
                 }
             }
         }
+
         else
         {
             Mesh mesh = GetComponent<MeshFilter>().mesh;
             Vector3[] vertices = mesh.vertices;
-            //Vector3[] normals = mesh.normals;
             Color[] colors = new Color[vertices.Length];
 
+            //This here is the base for the collision
+            //we go trough every vertex of the mesh individually
             for (var i = 0; i < vertices.Length; i++)
             {
-                if (Physics.OverlapSphere(transform.position + vertices[i], 0f).Length != 0)
+                //and check if it has a overlap with a collider by creating a sphere with the radius 0 at the mesh position+the vertex local position
+                if (Physics.OverlapSphere(transform.position + vertices[i], 0f).Length != 0)                                            
                 {
-                    //Debug.Log("colliding");
-                    colors[i] = Notice;
+                    colors[i] = Notice;//colliding
                     colliding = true;
 
                 }
                 else if (colliding == true)
                 {
-                    //Debug.Log("No collision here");
                     colors[i] = NonColliding;//This makes the mesh invisble where there is no collision, if there is collision elsewhere
                 }
                 else
@@ -93,12 +95,11 @@ public class VerticesCollider : MonoBehaviour
                 mesh.colors = colors;//is it maybe faster if we instantly write to mesh.colors instead of colors first?
             }
 
-
-            //Debug.LogWarning("Collision check ended");
         }
 
     }
 
+    //method used for the experimental collision system
     IEnumerator ScanMeshForCollision()
     {
         
@@ -111,14 +112,12 @@ public class VerticesCollider : MonoBehaviour
         {
             if (Physics.OverlapSphere(transform.position + vertices[i], 0f).Length != 0)
             {
-                //Debug.Log("colliding");
-                ColorStorage[i] = Notice;
+                ColorStorage[i] = Notice;//colliding
                 colliding = true;
 
             }
             else if (colliding == true)
             {
-                //Debug.Log("No collision here");
                 ColorStorage[i] = NonColliding;//This makes the mesh invisble where there is no collision, if there is collision elsewhere
             }
             else
@@ -133,19 +132,3 @@ public class VerticesCollider : MonoBehaviour
         yield return null;
     }
 }
-    //This is the Code Johannes wrote for us, it is probably more efficient/better than what we have but I don't understand it.
-    //public bool isPointInVol(obj, pos) //checks if supplied position is inside supplied mesh object
-    //{
-        //var = obj.mesh;
-        //var nVerts = tMesh.numverts;
-        //bool isInVol = true;
-
-       // for (v = 1 to nVerts while isInVol)
-        //{
-                //if (asin(dot(getNormal tMesh v)(normalize(((getVert tMesh v) * obj.transform) - pos))) <= 0.0)
-            //{
-            //isInVol = false;
-            //tMesh = nVerts = vPos = undefined;
-            //}
-        //return isInVol;
-    //}
