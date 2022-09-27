@@ -14,10 +14,13 @@ public class ScanningMasterScript : MonoBehaviour
     public Camera ARCamera;
     private GameObject CurrentBoiler;
     private static int CurrentBoilerNumber;
+    private Vector3 lastBoilerPos;
+    private Quaternion lastBoilerRot;
+    private bool firstBoiler;
     // Start is called before the first frame update
     void Start()
     {
-        
+        firstBoiler = true;
     }
 
     // Update is called once per frame
@@ -28,10 +31,19 @@ public class ScanningMasterScript : MonoBehaviour
 
     public void SpawnBoiler(int BoilerNumber)
     {
+        if (firstBoiler)
+        {
+            //Instead of Vector3.zero, we should probably spawn the Boiler at the center of the FOV
+            CurrentBoiler = Instantiate(BoilerList[BoilerNumber], ARCamera.transform.position, Quaternion.identity);
+            CurrentBoilerNumber = BoilerNumber;
+            firstBoiler = false;
+        }
+        else
+        {
+            CurrentBoiler = Instantiate(BoilerList[BoilerNumber], lastBoilerPos, lastBoilerRot);
+            CurrentBoilerNumber = BoilerNumber;
+        }
         
-        //Instead of Vector3.zero, we should probably spawn the Boiler at the center of the FOV
-        CurrentBoiler = Instantiate(BoilerList[BoilerNumber], ARCamera.transform.position, Quaternion.identity);
-        CurrentBoilerNumber = BoilerNumber;
     }
 
     public void HideBoiler()
@@ -49,8 +61,14 @@ public class ScanningMasterScript : MonoBehaviour
 
     public void RemoveBoiler()
     {
+        //Save the Boilers last position and rotation for the next one
+        lastBoilerPos = CurrentBoiler.transform.position;
+        lastBoilerRot = CurrentBoiler.transform.rotation;
+
         //Maybe this causes Problems because it destroys the CurrentBoiler GameObject, maybe we cannnot fill this again later
         Destroy(CurrentBoiler);
+            
+
     }
 
     public void Screenshot()
