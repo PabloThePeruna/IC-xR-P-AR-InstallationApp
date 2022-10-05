@@ -5650,6 +5650,7 @@ MonoBehaviour:
   - {fileID: 7078717111030430427, guid: de47e04eb6f8cd1499b2a150788838e1, type: 3}
   - {fileID: 2214546994689765425, guid: f5efdf81e8565ba4abdc92d7692ef73b, type: 3}
   - {fileID: 2172481388248952137, guid: e98f748144edad54784a7b35141ea71d, type: 3}
+  ARCamera: {fileID: 0}
 --- !u!1 &1047396805
 GameObject:
   m_ObjectHideFlags: 0
@@ -6784,6 +6785,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: MainMenu
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1010853301}
+        m_TargetAssemblyTypeName: ScanningMasterScript, Assembly-CSharp
+        m_MethodName: RemoveBoiler
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1146692703
