@@ -96,7 +96,11 @@ public class ButtonState : MonoBehaviour
         string text = "CoLiDAR Measurements: ";
         for (int i = 0; i < NumberOfButtons; i++)
         {
-            text = text + "\n" + FunctionButtons[i].GetComponentInChildren<TMP_Text>().text;
+            if (startPoints[i].activeSelf)
+            {
+                text = text + "\n" + FunctionButtons[i].GetComponentInChildren<TMP_Text>().text;
+            }
+                
         }
         UniClipboard.SetText(text);
         Debug.Log(text);

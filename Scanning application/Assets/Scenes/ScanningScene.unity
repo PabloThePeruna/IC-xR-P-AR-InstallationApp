@@ -5650,7 +5650,7 @@ MonoBehaviour:
   - {fileID: 7078717111030430427, guid: de47e04eb6f8cd1499b2a150788838e1, type: 3}
   - {fileID: 2214546994689765425, guid: f5efdf81e8565ba4abdc92d7692ef73b, type: 3}
   - {fileID: 2172481388248952137, guid: e98f748144edad54784a7b35141ea71d, type: 3}
-  ARCamera: {fileID: 0}
+  ARCamera: {fileID: 642948561}
 --- !u!1 &1047396805
 GameObject:
   m_ObjectHideFlags: 0
